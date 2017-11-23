@@ -1,0 +1,74 @@
+<ion-content padding>
+  <ion-grid>
+    <ion-row>
+      <ion-col></ion-col>
+      <ion-col></ion-col>
+      <ion-col>
+        <h1 id="login-heading2" style="color:#156835;text-align:center;font-size:50px;">
+          Register
+        </h1>
+      </ion-col>
+      <ion-col></ion-col>
+      <ion-col></ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <button id="login-button11" ion-button on-click="goBack()" color="light" normal style="height: 50px; width: 70px; font-weight:1200;color:#156835;">
+          <ion-icon name="arrow-back"></ion-icon>
+          Back
+        </button>
+      </ion-col>
+
+      <ion-col>
+
+      </ion-col>
+      <button id="login-button10" ion-button on-click="goToHomepage()" color="light" normal style="height: 50px; width: 70px; font-weight:1200;color:#156835;">
+        <ion-icon name="home"></ion-icon>
+        Home
+      </button>
+    </ion-row>
+    <ion-row>
+      <br>
+      <br>
+      <br>
+      <h2 id="login-heading1" style="color:#808080;">
+        Please start typing in your first name and choose from the drop-down list
+      </h2>
+      <br>
+      <br>
+      <br>
+      <br>
+    </ion-row>
+
+
+
+    <ion-row>
+      <ion-col>
+        <h3 id="login-heading4" style="color:#808080;">
+          First Name:
+        </h3>
+      </ion-col>
+      <ion-col>
+        <form id="Register-form1">
+          <ion-item id="Register-input1">
+            <ion-label></ion-label>
+            <ion-input type="text" placeholder="" [(ngModel)]="firstNameInput" [ngModelOptions]="{standalone: true}" style="width:200px"></ion-input>
+          </ion-item>
+        </form>
+        <br>
+        <br>
+        <br>
+        <br>
+      </ion-col>
+      <ion-col></ion-col>
+    </ion-row>
+    <ion-row>
+      <br>
+      <br>
+      <button id="login-button27" on-click = "goRegister2()" ion-button color="light" large style="font-weight:600;color:#156835;">
+        Next
+      </button>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>

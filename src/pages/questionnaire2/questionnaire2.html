@@ -1,0 +1,96 @@
+
+<ion-content padding >
+    <ion-grid>
+       <ion-row>
+         <ion-col></ion-col>
+         <ion-col></ion-col>
+         <ion-col>
+             <h1 id="login-heading2" style="color:#156835;text-align:center;font-size:50px;">
+                 Questionnaire
+               </h1>
+             </ion-col> 
+         <ion-col></ion-col>
+         <ion-col></ion-col> 
+       </ion-row>
+      <ion-row>
+        <ion-col>
+          <button id="login-button11" ion-button  on-click="goBack()" color="light" normal style="height: 50px; width: 70px; font-weight:1200;color:#156835;">
+             <ion-icon name="arrow-back"></ion-icon>
+             Back
+           </button>
+        </ion-col>
+       
+       <ion-col>
+         
+       </ion-col> 
+       <button id="login-button10" ion-button  on-click="goToHomepage()" color="light" normal style="height: 50px; width: 70px; font-weight:1200;color:#156835;">
+           <ion-icon name="home"></ion-icon>
+           Home
+         </button>
+      </ion-row>
+      <ion-row>
+          <ion-col></ion-col>
+          <ion-col></ion-col>
+        <ion-col>
+        <br>
+        <br>
+          <h2 id="register0-heading21" style="color:#808080;width:400px;">
+              Why would you like to volunteer at Sutton Community Farm? (tick all that apply)
+              <br>
+              <br>
+            </h2>
+          </ion-col>
+          <ion-col></ion-col>
+      </ion-row>
+      
+      <ion-row>
+          <ion-list>
+              
+                <ion-item>
+                  <ion-label>To learn new skills</ion-label>
+                  <ion-checkbox [(ngModel)]="answer1"></ion-checkbox>
+                </ion-item>
+              
+                <ion-item>
+                  <ion-label>To meet people</ion-label>
+                  <ion-checkbox [(ngModel)]="answer2" ></ion-checkbox>
+                </ion-item>
+              
+                <ion-item>
+                  <ion-label>For exercise</ion-label>
+                  <ion-checkbox [(ngModel)]="answer3"></ion-checkbox>
+                </ion-item>
+
+                <ion-item>
+                    <ion-label>For enjoyment</ion-label>
+                    <ion-checkbox [(ngModel)]="answer4"></ion-checkbox>
+                  </ion-item>
+
+                  <ion-item>
+                      <ion-label>To do something different</ion-label>
+                      <ion-checkbox [(ngModel)]="answer5"></ion-checkbox>
+                    </ion-item>
+
+    
+                      <ion-item>
+                          <ion-label>To improve my mental wellbeing</ion-label>
+                          <ion-checkbox [(ngModel)]="answer6"></ion-checkbox>
+                        </ion-item>
+
+                        <ion-item>
+                            <ion-label>Other</ion-label>
+                            <ion-checkbox [(ngModel)]="answer7"></ion-checkbox>
+                          </ion-item>
+              
+              </ion-list>
+      </ion-row>
+      <ion-row>
+          <br>
+          <br>
+          <button id="login-button27" on-click = "goQuestionnaire3()" ion-button color="light" large style="font-weight:600;color:#156835;">
+            Next
+          </button>
+        </ion-row>
+  
+    </ion-grid>
+  </ion-content>
