@@ -17,9 +17,13 @@ import { Questionnaire1Page } from '../pages/questionnaire1/questionnaire1';
 import { Questionnaire2Page } from '../pages/questionnaire2/questionnaire2';
 import { HttpModule } from '@angular/http';
 
+import { SQLite, SQLiteObject } from '@ionic-native/sqlite';
+import { IonicStorageModule } from '@ionic/storage';
+
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { ShareProvider } from '../providers/share/share';
+import { WebService } from '../providers/web-service';
 
 import { File } from '@ionic-native/file';
 
@@ -64,10 +68,12 @@ import { File } from '@ionic-native/file';
     Questionnaire2Page
   ],
   providers: [
+    SQLite,
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     ShareProvider,
+    WebService,
     File
   ]
 })
