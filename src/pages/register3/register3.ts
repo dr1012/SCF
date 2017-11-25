@@ -20,6 +20,7 @@ export class Register3Page {
 
   goToHomepage(){
     this.navCtrl.push(HomepagePage);
+    this.shareprovider.clear();
   }
   goBack(){
     this.navCtrl.pop();

@@ -13,7 +13,7 @@ export class WebService {
       location: 'default'
     })
       .then((db: SQLiteObject) => {
-        db.executeSql('create table volunteers(firstname VARCHAR(30), lastname VARCHAR(30), email VARCHAR(50), phone_number NUMERIC(15, 0), address TEXT, postcode TEXT, PRIMARY KEY (lastname)   )', {})
+        db.executeSql('create table volunteers(id INT NOT NULL AUTO_ICREMENT,firstname VARCHAR(30), lastname VARCHAR(30), email VARCHAR(50), phone_number NUMERIC(15, 0), address TEXT, postcode TEXT, PRIMARY KEY (id)   )', {})
           .then(() => {
             console.log("Database Created");
           })

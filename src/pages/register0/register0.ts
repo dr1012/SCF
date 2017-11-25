@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, AlertController } from 'ionic-angular';
 import { HomepagePage } from '../homepage/homepage';
 import { Register1Page } from '../register1/register1';
-
+import { ShareProvider } from '../../providers/share/share';
 
 @Component({
   selector: 'page-register0',
@@ -11,7 +11,7 @@ import { Register1Page } from '../register1/register1';
 export class Register0Page {
 
 
-  constructor(public navCtrl: NavController,  private alertController: AlertController) {
+  constructor(public navCtrl: NavController,  private alertController: AlertController, private shareprovider: ShareProvider) {
   }
   
   goToHomepage(){
@@ -21,8 +21,9 @@ export class Register0Page {
     this.navCtrl.pop();
   }
   goRegister1(){
-
+    this.shareprovider.clear();
     this.navCtrl.push(Register1Page);
+
 
   }
   Not16(){

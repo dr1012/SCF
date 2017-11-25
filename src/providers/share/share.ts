@@ -20,6 +20,10 @@ getElements(){
  return this.new_registration;
 }
 
+clear(){
+  this.new_registration = [];
+}
+
 addElements(element){
   this.new_registration.push(element);
 }
