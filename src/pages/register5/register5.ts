@@ -3,7 +3,6 @@ import { NavController, AlertController } from 'ionic-angular';
 import { HomepagePage } from '../homepage/homepage';
 import { ShareProvider } from '../../providers/share/share';
 import { Questionnaire0Page } from '../questionnaire0/questionnaire0';
-import { File } from '@ionic-native/file';
 import { WebService } from '../../providers/web-service';
 
 @Component({
@@ -15,11 +14,16 @@ export class Register5Page {
   addressInput='';
   postcodeInput='';
   itemcount: number = 0;
+  items: any[] = [];
 
 
 
   constructor(public webSrv: WebService,public navCtrl: NavController, private alertController: AlertController, private shareprovider: ShareProvider)  {
-    
+   this.webSrv.getDataFromSQLlite().then(data => {
+     this.itemcount = data.rows.length;       
+      // Here i get the total row count from the SQLite DB
+      //we have to have that in otherwise it doesn't work
+    });
   }
     
 
@@ -37,11 +41,11 @@ export class Register5Page {
 
   public goRegister6(){
     if(this.addressInput && this.postcodeInput){
-
+      this.syncFromDb();
       this.shareprovider.addElements(this.addressInput); 
       this.shareprovider.addElements(this.postcodeInput);
-      this.add_volunteer();
-      this.navCtrl.push(Questionnaire0Page);
+      console.log(this.shareprovider.getElements());
+     // this.navCtrl.push(Questionnaire0Page);
    
     }
 
@@ -56,10 +60,28 @@ export class Register5Page {
   
   }
 
- /* public Test(){
-    console.log(JSON.stringify(this.items));
+  public addToDb(){
+    this.syncFromDb();
+    this.add_volunteer();
+  }
+
+  syncFromDb() {
+    this.items = [];
+    this.webSrv.getDataFromSQLlite().then(data => {
+      var count = data.rows.length;
+      this.itemcount = count;
+      for (var i = 0; i < count; i++) {
+        this.items.push(data.rows.item(i));
+      }
+    });
+  }
+
+ public Test(){
+    //this.syncFromDb(); this seems to completely arrays anything in items[] so can't add it in
+    console.log("first row: " + this.items);
+    console.log("second row:  "+ JSON.stringify(this.items)); //this has been checked, this gives out an array (because items is an array) and inside seem to be JSON arrays, each row is a single JSON array
     
-  }*/
+  }
 
   
 }

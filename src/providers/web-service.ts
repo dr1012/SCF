@@ -13,7 +13,7 @@ export class WebService {
       location: 'default'
     })
       .then((db: SQLiteObject) => {
-        db.executeSql('create table volunteers(id INT NOT NULL AUTO_ICREMENT,firstname VARCHAR(30), lastname VARCHAR(30), email VARCHAR(50), phone_number NUMERIC(15, 0), address TEXT, postcode TEXT, PRIMARY KEY (id)   )', {})
+        db.executeSql('create table volunteers(firstname VARCHAR(30), lastname VARCHAR(30), email VARCHAR(50), phone_number NUMERIC(15, 0), address TEXT, postcode TEXT)', {})
           .then(() => {
             console.log("Database Created");
           })
@@ -43,12 +43,14 @@ export class WebService {
       location: 'default'
     })
       .then((db: SQLiteObject) => {
+        
           db.executeSql('insert into volunteers values (?,?,?,?,?,?)', [data[0], data[1], data[2], data[3], data[4], data[5]])
             .then(() => {
               console.log("Data Inserted");
+              console.log(data[0]+"," +data[1]+","+ data[2]+"," +data[3]+", "+data[4]+", "+data[5])
             })
             .catch(e => console.log(e));
-        
+          
       })
       .catch(e => console.log(e));
   }
