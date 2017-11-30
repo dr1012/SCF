@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, AlertController } from 'ionic-angular';
 import { HomepagePage } from '../homepage/homepage';
 import { Questionnaire2Page } from '../questionnaire2/questionnaire2';
-
+import { sqlitedatabase } from '../../providers/sqlitedatabase/sqlitedatabase'
 
 
 @Component({
@@ -18,9 +18,10 @@ export class Questionnaire1Page {
   answer4 = 'false';
   answer5 = 'false';
   answer6 = 'false';
+  answers: any[];
+   
 
-
-  constructor(public navCtrl: NavController,  private alertController: AlertController ) {
+  constructor(public navCtrl: NavController,  private alertController: AlertController, private sqlitedatabase :sqlitedatabase  ) {
   }
   
   goToHomepage(){
@@ -30,7 +31,16 @@ export class Questionnaire1Page {
     this.navCtrl.pop();
   }
   goQuestionnaire2(){
+    this.answers=[this.answer1, this.answer2, this.answer3, this.answer4, this.answer5, this.answer6];
     if(this.answer1||this.answer2||this.answer3||this.answer4||this.answer5||this.answer6){
+      for(var i =0; i<this.answers.length; i++){
+        if(this.answers[i]){
+          this.sqlitedatabase.db.executeSql('insert into Questionnaire_Answers (Question1) VALUES(\''+this.answers[i]+'\')  ', {})
+          .then(() => console.log('Questionnaire data added'))
+          .catch(e => console.log(e));
+        }
+      }
+
     this.navCtrl.push(Questionnaire2Page);
     }
     else{

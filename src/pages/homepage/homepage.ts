@@ -7,8 +7,9 @@ import { LogoutPage } from '../logout/logout';
 import * as papa from 'papaparse';
 import { Http } from '@angular/http'
 
-import { WebService } from '../../providers/web-service';
 import { File } from '@ionic-native/file';
+
+import { sqlitedatabase } from '../../providers/sqlitedatabase/sqlitedatabase'
 
 @Component({
   selector: 'page-homepage',
@@ -16,11 +17,10 @@ import { File } from '@ionic-native/file';
 })
 export class HomepagePage {
 
-  items = [];
-  atabase: any;
-  itemcount: number = 0;
+  volunteers: string[] = [];
+  
 
-  constructor(public file: File, public webSrv: WebService, public navCtrl: NavController, private http: Http){}
+  constructor(public file: File, private sqlitedatabase :sqlitedatabase, public navCtrl: NavController, private http: Http){}
   
   goToLogin(){
     this.navCtrl.push(LoginPage);
@@ -30,20 +30,19 @@ export class HomepagePage {
     this.navCtrl.push(LogoutPage);
   }
 
+test(){
+  
+  //console.log("test without Json.stringify:  " + this.retrieveVolunteers);
+  //console.log("test with .toStrig method:   "  + this.retrieveVolunteers.toString);
+  //console.log("test with Json.stringify:   "  + JSON.stringify(this.retrieveVolunteers));
+  console.log(JSON.stringify(this.volunteers));
+  console.log(this.volunteers.toString);
+  console.log(this.volunteers[0].toString);
+}
 
-  syncFromDb() {
-    this.items = [];
-    this.webSrv.getDataFromSQLlite().then(data => {
-      var count = data.rows.length;
-      this.itemcount = count;
-      for (var i = 0; i < count; i++) {
-        this.items.push(data.rows.item(i));
-      }
-    });
-  }
 
 data_to_CSV(){
-  this.webSrv.ClearDB;
+  
   //this.syncFromDb();
  //let  string_function = this.items.toString;
  //let stringify_function = JSON.stringify(this.items);
@@ -64,6 +63,27 @@ data_to_CSV(){
   })*/
 
 
+}
+
+
+retrieveVolunteers(){
+  this.volunteers = [];
+  this.sqlitedatabase.db.executeSql('select *  From volunteers;',{})
+  .then((data) => {
+
+    if(data==null){
+      console.log("no data in table");
+    }
+
+    if(data.rows){
+      if(data.rows.length>0){
+        for(var i=0; i<data.rows.length; i++){
+          this.volunteers.push(data.rows.item(i));
+        }
+        
+      }
+    }
+  });
 }
 
 

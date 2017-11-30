@@ -26,6 +26,7 @@ import { ShareProvider } from '../providers/share/share';
 import { WebService } from '../providers/web-service';
 
 import { File } from '@ionic-native/file';
+import { sqlitedatabase } from '../providers/sqlitedatabase/sqlitedatabase';
 
 
 
@@ -74,7 +75,8 @@ import { File } from '@ionic-native/file';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     ShareProvider,
     WebService,
-    File
+    File,
+    sqlitedatabase
   ]
 })
 export class AppModule {}
