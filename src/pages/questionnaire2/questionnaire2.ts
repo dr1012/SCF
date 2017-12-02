@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, AlertController } from 'ionic-angular';
 import { HomepagePage } from '../homepage/homepage';
 import { Questionnaire3Page } from '../questionnaire3/questionnaire3';
+import { sqlitedatabase } from '../../providers/sqlitedatabase/sqlitedatabase'
 
 
 
@@ -13,9 +14,18 @@ import { Questionnaire3Page } from '../questionnaire3/questionnaire3';
 })
 export class Questionnaire2Page {
 
+  answer1 = 'false';
+  answer2 = 'false';
+  answer3 = 'false';
+  answer4 = 'false';
+  answer5 = 'false';
+  answer6 = 'false';
+  answer7 = 'false';
+  answers: any[];
 
 
-  constructor(public navCtrl: NavController,  private alertController: AlertController ) {
+
+  constructor(public navCtrl: NavController,  private alertController: AlertController, private sqlitedatabase :sqlitedatabase  ) {
   }
   
   goToHomepage(){
@@ -24,9 +34,28 @@ export class Questionnaire2Page {
   goBack(){
     this.navCtrl.pop();
   }
+  /*
   goQuestionnaire3(){
-    this.navCtrl.push(Questionnaire3Page);
+    this.answers=[this.answer1, this.answer2, this.answer3, this.answer4, this.answer5, this.answer6, this.answer7];
+    if(this.answer1||this.answer2||this.answer3||this.answer4||this.answer5||this.answer6||this.answer7){
+      for(var i =0; i<this.answers.length; i++){
+        if(this.answers[i]){
+          this.sqlitedatabase.db.executeSql('update Questionnaire_Answers (Question2) VALUES(\''+this.answers[i]+'\')  ', {})
+          .then(() => console.log('Questionnaire data added'))
+          .catch(e => console.log(e));
+        }
+      }
+
+    this.navCtrl.push(Questionnaire2Page);
+    }
+    else{
+      let addTodoAlert=this.alertController.create({ 
+        message: "Please select at least one option"
+      });
+      addTodoAlert.present();
+    }
+  }*/
   }
 
 
-}
+

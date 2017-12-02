@@ -1,0 +1,94 @@
+page-admin-visitor-data {
+        
+  .bg-image {
+    background-image: url('../assets/img/background-example.jpeg');
+    background-repeat: no-repeat;
+    background-position: center;
+    //background-size: contain;
+}
+
+.semi-transparent-button {
+    border: 1px solid rgb(255, 255, 255);
+    display: block;
+    box-sizing: border-box;
+   // margin: 0 auto;
+    padding: 8px;
+  //  width: 80%;
+    height:73px;
+    width: 315px;
+    background: #fff; /* fallback color for old browsers */background: rgba(201, 200, 200, 0.5);
+    border-radius: 8px;
+    color: rgb(255, 255, 255);
+    text-align: center;
+    text-decoration: none;
+   // font-weight: bold;
+    font-size:25px;
+    letter-spacing: 1px;
+    transition: all 0.3s ease-out;
+    
+  }
+
+  .custom-button {
+    border: 1px solid rgb(255, 255, 255);
+    display: block;
+    box-sizing: border-box;
+   // margin: 0 auto;
+    padding: 8px;
+  //  width: 80%;
+    height:50px;
+    width: 310px;
+    background: #fff; /* fallback color for old browsers */background: rgba(201, 200, 200, 0.5);
+    border-radius: 8px;
+    color: rgb(255, 255, 255);
+    //text-align: center;
+    text-decoration: none;
+   // font-weight: bold;
+    font-size:25px;
+    letter-spacing: 1px;
+    transition: all 0.3s ease-out;
+    
+  }
+
+  .nav-button {
+    border: 1px solid rgb(255, 255, 255);
+    display: block;
+    box-sizing: border-box;
+    margin: 0 auto;
+    padding: 8px;
+  //  width: 80%;
+    height:60px;
+    width: 185px;
+    background: #fff; /* fallback color for old browsers */background: rgba(201, 200, 200, 0.5);
+    border-radius: 8px;
+    color: rgb(255, 255, 255);
+    //text-align: center;
+    text-decoration: none;
+   // font-weight: bold;
+    font-size:30px;
+    letter-spacing: 1px;
+    transition: all 0.3s ease-out;
+    
+  }
+
+  .chart-wrapper {
+    width: 60%;
+    height: 60%;
+    display: inline-block;
+    margin: 4em 2em;
+    position: absolute;
+    top: 95px;
+    left: 350px;
+    
+    
+ }
+
+
+ canvas  {
+    height: 500px;
+    width: 500px;
+    background: #fff; /* fallback color for old browsers */background: rgba(255, 254, 254, 1);
+ }
+
+
+}
+

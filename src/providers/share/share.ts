@@ -12,6 +12,8 @@ import { Injectable } from '@angular/core';
 export class ShareProvider {
   private new_registration =  []; 
   private new_questionnaire = [];
+  private registration_info = {};
+  private user_id=0;
 
   constructor(public http: HttpClient) {
     console.log('Hello ShareProvider Provider');
@@ -27,6 +29,24 @@ clear(){
 
 addElements(element){
   this.new_registration.push(element);
+}
+
+updateREgistrationInfo(key, value){
+  this.registration_info[key]=value;
+}
+
+getRegistrationInfo(){
+  return this.registration_info;
+}
+
+getRegistrationInfoElemet(key){
+  return this.registration_info[key];
+}
+getUserid(){
+  return this.user_id;
+}
+setUserId(user_id){
+  this.user_id=user_id;
 }
 
 

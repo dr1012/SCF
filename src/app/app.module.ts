@@ -16,18 +16,29 @@ import {HttpClientModule} from '@angular/common/http';
 import { Questionnaire1Page } from '../pages/questionnaire1/questionnaire1';
 import { Questionnaire2Page } from '../pages/questionnaire2/questionnaire2';
 import { HttpModule } from '@angular/http';
-
+import { AdminPage } from '../pages/admin/admin'; 
+import { TapRevealComponent } from '../components/tap-reveal/tap-reveal';
 import { SQLite, SQLiteObject } from '@ionic-native/sqlite';
 import { IonicStorageModule } from '@ionic/storage';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { ShareProvider } from '../providers/share/share';
-import { WebService } from '../providers/web-service';
+
 
 import { File } from '@ionic-native/file';
 import { sqlitedatabase } from '../providers/sqlitedatabase/sqlitedatabase';
 
+import { AdminHomePage } from '../pages/admin-home/admin-home';
+import { AdminAppSettingsPage } from '../pages/admin-app-settings/admin-app-settings';
+import { AdminVisitorHistoryPage } from '../pages/admin-visitor-history/admin-visitor-history';
+import { AdminVisitorDataPage } from '../pages/admin-visitor-data/admin-visitor-data'; 
+import { Graph1Page } from '../pages/graph1/graph1';
+import { Graph2Page } from '../pages/graph2/graph2';
+import { Graph3Page } from '../pages/graph3/graph3';
+import { Graph4Page } from '../pages/graph4/graph4';
+import { GraphCustomPage } from '../pages/graph-custom/graph-custom';
+import { ForgotAdminPasswordPage } from '../pages/forgot-admin-password/forgot-admin-password';
 
 
 @NgModule({
@@ -44,7 +55,19 @@ import { sqlitedatabase } from '../providers/sqlitedatabase/sqlitedatabase';
     Register4Page,
     Register0Page,
     Questionnaire1Page,
-    Questionnaire2Page
+    Questionnaire2Page,
+    AdminPage,
+    AdminHomePage,
+    AdminAppSettingsPage,
+    AdminVisitorHistoryPage,
+    AdminVisitorDataPage,
+    TapRevealComponent,
+    Graph1Page,
+    Graph2Page,
+    Graph3Page,
+    Graph4Page,
+    GraphCustomPage,
+    ForgotAdminPasswordPage
   ],
   imports: [
     HttpClientModule,
@@ -66,7 +89,18 @@ import { sqlitedatabase } from '../providers/sqlitedatabase/sqlitedatabase';
     Register4Page,
     Register0Page,
     Questionnaire1Page,
-    Questionnaire2Page
+    Questionnaire2Page,
+    AdminPage,
+    AdminHomePage,
+    AdminAppSettingsPage,
+    AdminVisitorHistoryPage,
+    AdminVisitorDataPage,
+    Graph1Page,
+    Graph2Page,
+    Graph3Page,
+    Graph4Page,
+    GraphCustomPage,
+    ForgotAdminPasswordPage
   ],
   providers: [
     SQLite,
@@ -74,7 +108,6 @@ import { sqlitedatabase } from '../providers/sqlitedatabase/sqlitedatabase';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     ShareProvider,
-    WebService,
     File,
     sqlitedatabase
   ]

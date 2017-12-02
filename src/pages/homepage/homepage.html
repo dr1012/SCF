@@ -1,17 +1,14 @@
 
-<ion-content padding id="page1">
+<ion-content padding id="page1" padding class="bg-image">
   <ion-grid>
   <ion-row>
   <ion-col>
-  <img src="assets/img/DimYcmYQ6eLrATlPDuqU_sutton_logo.jpg" style="display:block;width:75%;height:auto;margin-left:auto;margin-right:auto;" />
+     <img src="assets/img/White-logo.png" style="display:block;width:75%;height:auto;margin-left:auto;margin-right:auto;"/>
 </ion-col>
   </ion-row>
 <ion-row>
     <ion-col>
-        <button id="homepage-button4" ion-button color="white_white"   style="color:#808080;"  style="font-size:10px;">
-            <ion-icon name="menu"></ion-icon>
-          </button>
-        </ion-col>      
+    </ion-col> 
   </ion-row>
  
   <ion-row>
@@ -24,9 +21,16 @@
     <ion-col></ion-col> 
     <ion-col></ion-col>   
   <ion-col> 
-    <button id="homepage-button1" ion-button color="dark_green"    style="color:#FFFFFF;font-size:40px;height:50px;width:250px" on-click="goToLogin()">
-      Login
-    </button>
+    <!-- https://www.webpagefx.com/blog/web-design/semi-transparent-buttons/ -->
+      <a id="homepage-button1" class="semi-transparent-button" href="#" on-click="goToLogin()">
+          <div>
+              <label> &#8239; </label>  
+              <ion-icon name="log-in"></ion-icon>  
+              <label> &#8239; &#8239; Login</label>       
+          </div>
+        
+      </a>
+
     <br>
     <br>
   </ion-col> 
@@ -39,43 +43,47 @@
     <ion-col></ion-col> 
     <ion-col></ion-col> 
     <ion-col>
-     
-  <button id="homepage-button2" ion-button color="dark_green" inline normal style="color:#FFFFFF;font-size:40px;height:50px;width:250px" on-click="goToRegister0()">
-    Register
-  </button>
+        <a id="homepage-button2" class="semi-transparent-button" href="#" on-click="goToRegister0()">
+            <label> &#8239; </label> 
+          <ion-icon name="create"></ion-icon>  
+          <label> &#8239; Register</label>     
+        </a>   
   <br>
   <br>
-</ion-col> 
-<ion-col></ion-col> 
-<ion-col></ion-col> 
-</ion-row>
-  
-<ion-row>
-    <ion-col></ion-col> 
-    <ion-col></ion-col> 
-    <ion-col>
-  <button id="homepage-button3" ion-button color="dark_green" inline normal style="color:#FFFFFF;font-size:40px;height:50px;width:250px" on-click="goToLogout()">
-    Logout
-  </button>
-  <br>
-  <br>
-</ion-col> 
-<ion-col></ion-col> 
-<ion-col></ion-col> 
-</ion-row>
-<ion-row>
-  <ion-col></ion-col> 
-  <ion-col></ion-col> 
-  <ion-col>
-<button id="homepage-button3" ion-button color="dark_green" inline normal style="color:#FFFFFF;font-size:40px;height:50px;width:250px" on-click="test()">
-  Test
-</button>
-<br>
-<br>
+
 </ion-col> 
 <ion-col></ion-col> 
 <ion-col></ion-col> 
 </ion-row>
 
+<ion-row>
+    <ion-col></ion-col> 
+    <ion-col></ion-col> 
+    <ion-col>
+        <a id="homepage-button3" class="semi-transparent-button" href="#" on-click="goToLogout()">
+            <label> &#8239; </label>   
+          <ion-icon name="log-out"></ion-icon>    
+            <label> &#8200; Logout</label>
+            
+        </a> 
+        
+  <br>
+  <br>
+</ion-col> 
+<ion-col></ion-col> 
+<ion-col></ion-col> 
+</ion-row>
+
+
   </ion-grid>
+
+  <ion-fab>
+      <button ion-fab mini color="light"><ion-icon name="add"></ion-icon></button>
+      <ion-fab-list>
+        <button id="homepage-button4"  ion-fab>
+          <ion-icon name="people" on-click="goToAdmin()"> </ion-icon>
+        </button>
+      </ion-fab-list>
+  </ion-fab>
+
 </ion-content>

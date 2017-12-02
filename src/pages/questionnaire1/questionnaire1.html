@@ -47,7 +47,7 @@
         <ion-list>
             
               <ion-item>
-                <ion-label>Growing and harvesting</ion-label>
+                <ion-label>Growing and harvesting </ion-label>
                 <ion-checkbox [(ngModel)]="answer1"></ion-checkbox>
               </ion-item>
             
@@ -62,19 +62,27 @@
               </ion-item>
 
               <ion-item>
+                <ion-label>DIY annd improving infrastructure</ion-label>
+                <ion-checkbox [(ngModel)]="answer4"></ion-checkbox>
+              </ion-item>
+
+              <ion-item>
                   <ion-label>Supporting others (social/therapeutic horticulture)</ion-label>
-                  <ion-checkbox [(ngModel)]="answer4"></ion-checkbox>
+                  <ion-checkbox [(ngModel)]="answer5"></ion-checkbox>
                 </ion-item>
 
                 <ion-item>
                     <ion-label>Supporting events and markets</ion-label>
-                    <ion-checkbox [(ngModel)]="answer5"></ion-checkbox>
+                    <ion-checkbox [(ngModel)]="answer6"></ion-checkbox>
                   </ion-item>
 
                   <ion-item>
                       <ion-label>Other</ion-label>
-                      <ion-checkbox [(ngModel)]="answer6"></ion-checkbox>
+                      <ion-checkbox [(ngModel)]="answer7"></ion-checkbox>
+                            <ion-input type="text" placeholder="Please specify here" [(ngModel)]="question7" [ngModelOptions]="{standalone: true}" style="width:200px"></ion-input>
+                         
                     </ion-item>
+
             
             </ion-list>
     </ion-row>

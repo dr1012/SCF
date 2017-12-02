@@ -1,0 +1,110 @@
+<!-- ADMIN LOG IN PAGE -->
+
+<ion-content padding class="bg-image">
+    <ion-grid>
+            <ion-row>
+                   
+                    <ion-col>
+                        <h1 id="login-heading2">
+                                <img src="assets/img/Admin_Login_Logo.png" style="display:block;width:40%;height:auto;margin-left:auto;margin-right:auto;"/>
+                          </h1>
+                        </ion-col> 
+                    
+                     
+                  </ion-row>
+      <ion-row>
+        <ion-col>
+            <!-- Back button, to homepage -->
+            <a id="admin-back-button" class="nav-button" href="#" on-click="goToHomepage()" float-left>
+                <div>
+                    <label> &#8239; </label>  
+                    <ion-icon name="arrow-round-back"></ion-icon>  
+                    <label> &#8239; Back</label>       
+                </div>
+              
+            </a> 
+          </ion-col>
+ <!--
+          
+          <ion-col>
+            <img src="assets/img/Admin_Login_Logo.png" style="display:block;width:400px;height:auto;margin-left:auto;margin-right:auto;"/>
+          </ion-col>
+        -->
+
+          <ion-col>
+              <!-- Home button, to homepage -->
+              <a id="admin-home-button" class="nav-button" href="#" on-click="goToHomepage()" float-right >
+                  <div>
+                      <label> &#8239; </label>  
+                      <ion-icon name="home"></ion-icon>  
+                      <label> &#8239; Home</label>       
+                  </div>
+                
+              </a> 
+
+          </ion-col>
+        </ion-row>
+
+
+        
+        <ion-row>
+            <br>
+            <br>
+            
+            
+            
+            
+<!--
+            <form id="Admin-Login-Form">
+                    <ion-item id="Admin-input1">
+                      <ion-label></ion-label>
+                      <ion-input type="text" placeholder="" [(ngModel)]="admin-password" [ngModelOptions]="{standalone: true}" style="width:200px"></ion-input>
+            </ion-item>
+        </form>
+
+    -->
+        </ion-row>
+        
+        
+
+        <ion-row>
+            <ion-col></ion-col> 
+            <ion-col></ion-col> 
+
+          <ion-col> 
+            <!-- Password Entry Form -->
+                    <ion-item>
+                        <ion-input type="password" placeholder="Password Input" class="password-container"></ion-input>
+                    </ion-item>
+                    <br>
+                
+            <!-- Admin Log in button -->
+            <a id="admin-login-button1" class="semi-transparent-button" href="#" on-click="goToAdminHome()">
+                <div>
+                    <label> &#8239; </label>  
+                    <ion-icon name="log-in"></ion-icon>  
+                    <label> &#8239; Login as Admin</label>       
+                </div>
+              
+            </a>
+        
+        
+            <a id="admin-login-button1" class="forgot-password-button" href="#" on-click="goToForgottenAdminPassword()" >
+                    <div>
+                            
+                        <label>Forgotten Password?</label>       
+                    </div>
+                  
+                </a>
+
+          </ion-col> 
+          <ion-col></ion-col> 
+          <ion-col></ion-col> 
+          
+        </ion-row>  
+
+
+  
+  </ion-grid>
+
+</ion-content>
