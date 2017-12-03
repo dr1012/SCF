@@ -35,7 +35,9 @@
       <br>
       <br>
         <h2 id="register0-heading21" style="color:#808080;">
-            Which volunteering activities are you interested in? (tick all that apply)
+          On which days are you able to volunteer? Tick all that apply.
+          Please note that volunteering on days other than Wednesday
+          must be arranged with farm staff.
             <br>
             <br>
           </h2>
@@ -47,43 +49,29 @@
         <ion-list>
             
               <ion-item>
-                <ion-label>Growing and harvesting </ion-label>
+                <ion-label>Wednesday </ion-label>
                 <ion-checkbox [(ngModel)]="answer1"></ion-checkbox>
               </ion-item>
             
               <ion-item>
-                <ion-label>Packing vegetables</ion-label>
+                <ion-label>Thursday Morning</ion-label>
                 <ion-checkbox [(ngModel)]="answer2" ></ion-checkbox>
               </ion-item>
             
               <ion-item>
-                <ion-label>Supporting administration (marketing, artwork, etc.)</ion-label>
+                <ion-label>Saturdays (fortnighlty)</ion-label>
                 <ion-checkbox [(ngModel)]="answer3"></ion-checkbox>
               </ion-item>
 
-              <ion-item>
-                <ion-label>DIY annd improving infrastructure</ion-label>
-                <ion-checkbox [(ngModel)]="answer4"></ion-checkbox>
-              </ion-item>
-
-              <ion-item>
-                  <ion-label>Supporting others (social/therapeutic horticulture)</ion-label>
-                  <ion-checkbox [(ngModel)]="answer5"></ion-checkbox>
-                </ion-item>
-
-                <ion-item>
-                    <ion-label>Supporting events and markets</ion-label>
-                    <ion-checkbox [(ngModel)]="answer6"></ion-checkbox>
-                  </ion-item>
-
+             
                   <ion-item>
                       <ion-label>Other</ion-label>
-                      <ion-checkbox [(ngModel)]="answer7"></ion-checkbox>
+                      <ion-checkbox [(ngModel)]="answer4"></ion-checkbox>
                     </ion-item>
                       <form id="Questionnaire1">
                         <ion-item id="Questionnaire1-input7">
                           <ion-label></ion-label>
-                          <ion-input type="text" placeholder="Please specify here" [(ngModel)]="answer7Text" [ngModelOptions]="{standalone: true}" style="width:200px"></ion-input>
+                          <ion-input type="text" placeholder="Please specify here" [(ngModel)]="answer4Text" [ngModelOptions]="{standalone: true}" style="width:200px"></ion-input>
                         </ion-item>
                       </form>
 
@@ -93,7 +81,7 @@
     <ion-row>
         <br>
         <br>
-        <button id="login-button27" on-click = "goQuestionnaire2()" ion-button color="light" large style="font-weight:600;color:#156835;">
+        <button id="login-button27" on-click = "goQuestionnaire12()" ion-button color="light" large style="font-weight:600;color:#156835;">
           Next
         </button>
       </ion-row>

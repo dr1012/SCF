@@ -29,63 +29,51 @@
        </button>
     </ion-row>
     <ion-row>
-        
-        
+        <ion-col></ion-col>
+        <ion-col></ion-col>
       <ion-col>
       <br>
       <br>
-        <h2 id="register0-heading21" style="color:#808080;">
-            Which volunteering activities are you interested in? (tick all that apply)
+        <h2 id="register0-heading21" style="color:#808080;width:400px;">
+          Do you have a particular interest in supporting other
+          volunteers at the Farm? This could include vulnerable adults
+          and children and would require additional training and DBS
+          checks.
             <br>
             <br>
           </h2>
         </ion-col>
-        
+        <ion-col></ion-col>
     </ion-row>
     
     <ion-row>
         <ion-list>
             
               <ion-item>
-                <ion-label>Growing and harvesting </ion-label>
+                <ion-label>Yes</ion-label>
                 <ion-checkbox [(ngModel)]="answer1"></ion-checkbox>
               </ion-item>
             
               <ion-item>
-                <ion-label>Packing vegetables</ion-label>
+                <ion-label>No</ion-label>
                 <ion-checkbox [(ngModel)]="answer2" ></ion-checkbox>
               </ion-item>
             
               <ion-item>
-                <ion-label>Supporting administration (marketing, artwork, etc.)</ion-label>
+                <ion-label>Not sure yet</ion-label>
                 <ion-checkbox [(ngModel)]="answer3"></ion-checkbox>
               </ion-item>
 
               <ion-item>
-                <ion-label>DIY annd improving infrastructure</ion-label>
-                <ion-checkbox [(ngModel)]="answer4"></ion-checkbox>
-              </ion-item>
-
-              <ion-item>
-                  <ion-label>Supporting others (social/therapeutic horticulture)</ion-label>
-                  <ion-checkbox [(ngModel)]="answer5"></ion-checkbox>
+                  <ion-label>Other</ion-label>
+                  <ion-checkbox [(ngModel)]="answer4"></ion-checkbox>
                 </ion-item>
-
-                <ion-item>
-                    <ion-label>Supporting events and markets</ion-label>
-                    <ion-checkbox [(ngModel)]="answer6"></ion-checkbox>
-                  </ion-item>
-
-                  <ion-item>
-                      <ion-label>Other</ion-label>
-                      <ion-checkbox [(ngModel)]="answer7"></ion-checkbox>
+                  <form id="Questionnaire1">
+                    <ion-item id="Questionnaire1-input7">
+                      <ion-label></ion-label>
+                      <ion-input type="text" placeholder="Please specify here" [(ngModel)]="answer4Text" [ngModelOptions]="{standalone: true}" style="width:200px"></ion-input>
                     </ion-item>
-                      <form id="Questionnaire1">
-                        <ion-item id="Questionnaire1-input7">
-                          <ion-label></ion-label>
-                          <ion-input type="text" placeholder="Please specify here" [(ngModel)]="answer7Text" [ngModelOptions]="{standalone: true}" style="width:200px"></ion-input>
-                        </ion-item>
-                      </form>
+                  </form>
 
             
             </ion-list>
@@ -93,7 +81,7 @@
     <ion-row>
         <br>
         <br>
-        <button id="login-button27" on-click = "goQuestionnaire2()" ion-button color="light" large style="font-weight:600;color:#156835;">
+        <button id="login-button27" on-click = "goQuestionnaire8()" ion-button color="light" large style="font-weight:600;color:#156835;">
           Next
         </button>
       </ion-row>

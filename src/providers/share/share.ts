@@ -11,13 +11,20 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class ShareProvider {
   private new_registration =  []; 
-  private new_questionnaire = [];
   private registration_info = {};
   private user_id=0;
 
   constructor(public http: HttpClient) {
-    console.log('Hello ShareProvider Provider');
+    
   }
+
+getFirstName(){
+  return this.new_registration[0];
+} 
+
+getLastName(){
+  return this.new_registration[1];
+}   
 
 getElements(){
  return this.new_registration;
@@ -48,29 +55,4 @@ getUserid(){
 setUserId(user_id){
   this.user_id=user_id;
 }
-
-
-
-
-getQuestionnaireElement(i){
-  return this.new_questionnaire[i];
- }
-
-
-getQuestionnaireElements(){
-  return this.new_questionnaire;
- }
- 
- QuestionnaireClear(){
-   this.new_questionnaire = [];
- }
- 
- QuestionnaireAddElements(element){
-   this.new_questionnaire.push(element);
- }
- 
- QuestionnaireGetElement(i){
-   return this.new_questionnaire[i];
-  }
-
 }

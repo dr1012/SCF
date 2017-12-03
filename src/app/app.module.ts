@@ -9,6 +9,16 @@ import { Register1Page } from '../pages/register1/register1';
 import { Register2Page } from '../pages/register2/register2';
 import { Register3Page } from '../pages/register3/register3';
 import { Questionnaire0Page } from '../pages/questionnaire0/questionnaire0';
+import { Questionnaire3Page } from '../pages/questionnaire3/questionnaire3';
+import { Questionnaire4Page } from '../pages/questionnaire4/questionnaire4';
+import { Questionnaire5Page } from '../pages/questionnaire5/questionnaire5';
+import { Questionnaire6Page } from '../pages/questionnaire6/questionnaire6';
+import { Questionnaire7Page } from '../pages/questionnaire7/questionnaire7';
+import { Questionnaire8Page } from '../pages/questionnaire8/questionnaire8';
+import { Questionnaire9Page } from '../pages/questionnaire9/questionnaire9';
+import { Questionnaire10Page } from '../pages/questionnaire10/questionnaire10';
+import { Questionnaire11Page } from '../pages/questionnaire11/questionnaire11';
+import { Questionnaire12Page } from '../pages/questionnaire12/questionnaire12';
 import { Register5Page } from '../pages/register5/register5';
 import { Register4Page } from '../pages/register4/register4';
 import { Register0Page } from '../pages/register0/register0';
@@ -39,6 +49,7 @@ import { Graph3Page } from '../pages/graph3/graph3';
 import { Graph4Page } from '../pages/graph4/graph4';
 import { GraphCustomPage } from '../pages/graph-custom/graph-custom';
 import { ForgotAdminPasswordPage } from '../pages/forgot-admin-password/forgot-admin-password';
+import { QuestionnaireDatabaseProvider } from '../providers/questionnaire-database/questionnaire-database';
 
 
 @NgModule({
@@ -67,7 +78,17 @@ import { ForgotAdminPasswordPage } from '../pages/forgot-admin-password/forgot-a
     Graph3Page,
     Graph4Page,
     GraphCustomPage,
-    ForgotAdminPasswordPage
+    ForgotAdminPasswordPage,
+    Questionnaire3Page,
+    Questionnaire4Page,
+    Questionnaire5Page,
+    Questionnaire6Page,
+    Questionnaire7Page,
+    Questionnaire8Page,
+    Questionnaire9Page,
+    Questionnaire10Page,
+    Questionnaire11Page,
+    Questionnaire12Page
   ],
   imports: [
     HttpClientModule,
@@ -85,6 +106,16 @@ import { ForgotAdminPasswordPage } from '../pages/forgot-admin-password/forgot-a
     Register2Page,
     Register3Page,
     Questionnaire0Page,
+    Questionnaire3Page,
+    Questionnaire4Page,
+    Questionnaire5Page,
+    Questionnaire6Page,
+    Questionnaire7Page,
+    Questionnaire8Page,
+    Questionnaire9Page,
+    Questionnaire10Page,
+    Questionnaire11Page,
+    Questionnaire12Page,
     Register5Page,
     Register4Page,
     Register0Page,
@@ -109,7 +140,8 @@ import { ForgotAdminPasswordPage } from '../pages/forgot-admin-password/forgot-a
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     ShareProvider,
     File,
-    sqlitedatabase
+    sqlitedatabase,
+    QuestionnaireDatabaseProvider
   ]
 })
 export class AppModule {}

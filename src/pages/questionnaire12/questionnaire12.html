@@ -29,63 +29,42 @@
        </button>
     </ion-row>
     <ion-row>
-        
-        
+        <ion-col></ion-col>
+        <ion-col></ion-col>
       <ion-col>
       <br>
       <br>
-        <h2 id="register0-heading21" style="color:#808080;">
-            Which volunteering activities are you interested in? (tick all that apply)
+        <h2 id="register0-heading21" style="color:#808080;width:400px;">
+          On average, what frequency do you anticipate volunteering?
             <br>
             <br>
           </h2>
         </ion-col>
-        
+        <ion-col></ion-col>
     </ion-row>
     
     <ion-row>
         <ion-list>
             
               <ion-item>
-                <ion-label>Growing and harvesting </ion-label>
+                <ion-label>Weekly</ion-label>
                 <ion-checkbox [(ngModel)]="answer1"></ion-checkbox>
               </ion-item>
             
               <ion-item>
-                <ion-label>Packing vegetables</ion-label>
+                <ion-label>Fortnightly</ion-label>
                 <ion-checkbox [(ngModel)]="answer2" ></ion-checkbox>
               </ion-item>
             
               <ion-item>
-                <ion-label>Supporting administration (marketing, artwork, etc.)</ion-label>
+                <ion-label>Monthly</ion-label>
                 <ion-checkbox [(ngModel)]="answer3"></ion-checkbox>
               </ion-item>
 
               <ion-item>
-                <ion-label>DIY annd improving infrastructure</ion-label>
-                <ion-checkbox [(ngModel)]="answer4"></ion-checkbox>
-              </ion-item>
-
-              <ion-item>
-                  <ion-label>Supporting others (social/therapeutic horticulture)</ion-label>
-                  <ion-checkbox [(ngModel)]="answer5"></ion-checkbox>
+                  <ion-label>Less often (than monthly)</ion-label>
+                  <ion-checkbox [(ngModel)]="answer4"></ion-checkbox>
                 </ion-item>
-
-                <ion-item>
-                    <ion-label>Supporting events and markets</ion-label>
-                    <ion-checkbox [(ngModel)]="answer6"></ion-checkbox>
-                  </ion-item>
-
-                  <ion-item>
-                      <ion-label>Other</ion-label>
-                      <ion-checkbox [(ngModel)]="answer7"></ion-checkbox>
-                    </ion-item>
-                      <form id="Questionnaire1">
-                        <ion-item id="Questionnaire1-input7">
-                          <ion-label></ion-label>
-                          <ion-input type="text" placeholder="Please specify here" [(ngModel)]="answer7Text" [ngModelOptions]="{standalone: true}" style="width:200px"></ion-input>
-                        </ion-item>
-                      </form>
 
             
             </ion-list>
@@ -93,7 +72,7 @@
     <ion-row>
         <br>
         <br>
-        <button id="login-button27" on-click = "goQuestionnaire2()" ion-button color="light" large style="font-weight:600;color:#156835;">
+        <button id="login-button27" on-click = "Finish()" ion-button color="light" large style="font-weight:600;color:#156835;">
           Next
         </button>
       </ion-row>

@@ -21,6 +21,7 @@ export class sqlitedatabase {
   answers: string[] = [];
   list =[];
   public returnArray: Array<any>;
+  data: any = null;
  
 
    createDatabaseFile(): void{
@@ -29,7 +30,7 @@ export class sqlitedatabase {
       location: 'default'
     })
       .then((db: SQLiteObject) => {
-        console.log('Database created!')
+        console.log('Database created!');
         this.db = db;  //assign
         this.createTables(); //create new tables
       })
@@ -42,11 +43,7 @@ export class sqlitedatabase {
    createTables(): void{
     this.db.executeSql('CREATE TABLE IF NOT EXISTS `Volunteers` ( `ID` INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, `FirstName` TEXT NOT NULL, `LastName` TEXT NOT NULL, `Email` TEXT NOT NULL, `PhoneNumber` TEXT NOT NULL, `Address` TEXT NOT NULL, `Postcode` TEXT NOT NULL )', {}) //Executes an SQL command
     .then(() => {
-      console.log("first table crated");
-      this.db.executeSql('CREATE TABLE IF NOT EXISTS `Questionnaire_Answers` ( `Question1` TEXT, `Question2` TEXT, `Question3` TEXT, `Question4` TEXT, `Question5` TEXT, `Question6` TEXT, `Question7` TEXT, `Question8` TEXT, `Question9` TEXT, `Question10` TEXT, `Question11` TEXT, `Question12` TEXT, `Question13` TEXT, `Question14` TEXT, `Question15` TEXT )', {})
-      .then(() => console.log('second table created'))
-      .catch(e => console.log(e));
-    } )
+      console.log("first table crated");})
     .catch(e => console.log(e));
   }
 
@@ -68,26 +65,6 @@ export class sqlitedatabase {
 
 
 
- retrieveQuestionnaireAnswers(){
-  this.volunteers = [];
-  this.db.executeSql('SELECT * FROM Questionnaire_Answers',{})
-  .then((data) => {
-
-    if(data==null){
-      return
-    }
-
-    if(data.rows){
-      if(data.rows.length>0){
-        for(var i=0; i<data.rows.length; i++){
-          this.answers.push(data.rows.item(i)) // returns an array of JSON pairs, can play around to retrieve specific elements in the row too
-        }
-      }
-    }
-  });
-}
-
-  
   retrieveLastNamePair(){
     this.db.executeSql('select LastName from volunteers', [])
     .then((data) => {
@@ -177,7 +154,7 @@ export class sqlitedatabase {
             }
             //console.log(returnArray);
             //console.log(JSON.stringify(returnArray));
-            return returnArray.map;
+            return returnArray;
             
             
             
@@ -213,7 +190,20 @@ export class sqlitedatabase {
           
         }
 
-  
+        ReturnID(firstName: String, lastName: String){
+          var Id;
+          return this.db.executeSql('select ID from volunteers where FirstName = ? and LastName = ?', [firstName,lastName])
+          .then((data) => {
+            Id = data;
+            console.log('ID retrieved correctly');
+            return Id;
+          }, err => {
+            console.log('Error: ', err);
+          });
+         
+        }
+
+
 
 
 }
