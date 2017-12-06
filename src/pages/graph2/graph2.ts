@@ -54,6 +54,7 @@ export class Graph2Page {
     this.navCtrl.push(GraphCustomPage);
   }
 
+
   @ViewChild('pieChart') pieChart;
   @ViewChild('barChart') barChart;
   @ViewChild('lineChart') lineChart;
@@ -63,38 +64,38 @@ export class Graph2Page {
    {
       'technology' : 'Under 16 years old',
       'time'       : 50,
-      'color'      : 'rgba(206, 61, 95, 0.5)',
-      'hover'      : 'rgba(199, 108, 129, 0.5)'
+      'color'      : 'rgba(102, 204, 0, 0.5)',
+      'hover'      : 'rgba(102, 204, 0, 0.5)'
    },
    {
       'technology' : '16-24 year olds',
       'time'       : 15,
-      'color'      : 'rgba(83, 131, 185, 0.5)',
-      'hover'      : 'rgba(122, 160, 202, 0.5)'
+      'color'      : 'rgba(255, 255, 0, 0.5)',
+      'hover'      : 'rgba(255, 255, 0, 0.5)'
    },
    {
       'technology' : '25-34 year olds',
       'time'       : 10,
-      'color'      : 'rgba(198, 147, 194, 0.5)',
-      'hover'      : 'rgba(200, 166, 197, 0.5)'
+      'color'      : 'rgba(0, 153, 0, 0.5)',
+      'hover'      : 'rgba(0, 153, 0, 0.5)'
    },
    {
       'technology' : '35-44 year olds',
       'time'       : 5,
-      'color'      : 'rgba(54, 116, 152, 0.5)',
-      'hover'      : 'rgba(103, 139, 160, 0.5)'
+      'color'      : 'rgba(153, 255, 51, 0.5)',
+      'hover'      : 'rgba(153, 255, 51, 0.5)'
    },
    {
       'technology' : '45-54 years old',
       'time'       : 10,
-      'color'      : 'rgba(152, 54, 145, 0.5)',
-      'hover'      : 'rgba(152, 89, 149, 0.5)',
+      'color'      : 'rgba(204, 102, 0, 0.5)',
+      'hover'      : 'rgba(204, 102, 0, 0.5)',
    },
    {
       'technology' : '55 and above',
       'time'       : 10,
-      'color'      : 'rgba(192, 192, 192, 0.5)',
-      'hover'      : 'rgba(220, 220, 220, 0.5)'
+      'color'      : 'rgba(102, 51, 0, 0.5)',
+      'hover'      : 'rgba(102, 51, 0, 0.5)'
    }
    ]
 };		
@@ -168,7 +169,7 @@ public chartLoadingEl            : any;
               layout: {
                  padding: {
                     left     : 50,
-                    right    : 0,
+                    right    : 20,
                     top      : 0,
                     bottom   : 0
                  }

@@ -5,7 +5,7 @@ import { SQLite, SQLiteObject } from '@ionic-native/sqlite';
 
 import 'rxjs/add/operator/map';
 
-const DATABASE_FILENAME: string =  'data.db';
+
 @Injectable()
 export class sqlitedatabase {
  
@@ -26,7 +26,7 @@ export class sqlitedatabase {
 
    createDatabaseFile(): void{
     this.sqlite.create({      //creates new database
-      name: 'DATABASE_FILENAME',   
+      name: 'data.db',   
       location: 'default'
     })
       .then((db: SQLiteObject) => {
@@ -93,29 +93,28 @@ export class sqlitedatabase {
       });
     }
 
-    retrieveLastName(){
-      return this.db.executeSql('select LastName from volunteers', [])
+  retrieveLastName() {
+    return this.db.executeSql('select LastName from volunteers', [])
       .then((data) => {
         let returnArray = [];
-          if(data.rows.length>0){
-            for(var i=0; i<data.rows.length; i++){
-              returnArray.push(data.rows.item(i).LastName); // returns an array of JSON pairs, can play around to retrieve specific elements in the row too
-            }
-          
+        if (data.rows.length > 0) {
+          for (var i = 0; i < data.rows.length; i++) {
+            returnArray.push(data.rows.item(i).LastName);
           }
-         //console.log(returnArray);
-          //console.log(JSON.stringify(returnArray));
-          return returnArray;
-          
-          
-          
-    
-        }, err => {
-          console.log('Error: ', err);
-          return [];
-        });
-        
-      }
+
+        }
+
+        return returnArray;
+
+
+
+
+      }, err => {
+        console.log('Error: ', err);
+        return [];
+      });
+
+  }
 
       retrieveFirstName(){
         return this.db.executeSql('select FirstName from volunteers', [])
@@ -152,8 +151,7 @@ export class sqlitedatabase {
               }
             
             }
-            //console.log(returnArray);
-            //console.log(JSON.stringify(returnArray));
+         
             return returnArray;
             
             
@@ -202,6 +200,10 @@ export class sqlitedatabase {
           });
          
         }
+
+       
+
+        
 
 
 

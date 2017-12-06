@@ -8,26 +8,46 @@ page-graph1 {
     }
 
     .semi-transparent-button {
-        border: 1px solid rgb(255, 255, 255);
-        display: block;
-        box-sizing: border-box;
-       // margin: 0 auto;
-        padding: 8px;
-      //  width: 80%;
-        height:73px;
-        width: 315px;
-        background: #fff; /* fallback color for old browsers */background: rgba(201, 200, 200, 0.5);
-        border-radius: 8px;
-        color: rgb(255, 255, 255);
-        text-align: center;
-        text-decoration: none;
-       // font-weight: bold;
-        font-size:25px;
-        letter-spacing: 1px;
-        transition: all 0.3s ease-out;
-        
-      }
+      border: 1px solid rgb(255, 255, 255);
+      display: block;
+      box-sizing: border-box;
+     // margin: 0 auto;
+      padding: 8px;
+    //  width: 80%;
+      height:45px;
+      width: 595px;
+      background: #fff; /* fallback color for old browsers */background: rgba(201, 200, 200, 0.5);
+      border-radius: 8px;
+      color: rgb(255, 255, 255);
+      text-align: center;
+      text-decoration: none;
+     // font-weight: bold;
+      font-size:25px;
+      letter-spacing: 1px;
+      transition: all 0.3s ease-out;
+      
+    }
 
+    .semi-transparent-button2 {
+      border: 1px solid rgb(255, 255, 255);
+      display: block;
+      box-sizing: border-box;
+     // margin: 0 auto;
+      padding: 8px;
+    //  width: 80%;
+      height:45px;
+      width: 595px;
+      background: #fff; /* fallback color for old browsers */background: rgba(201, 200, 200, 0.5);
+      border-radius: 8px;
+      color: rgb(255, 255, 255);
+      text-align: center;
+      text-decoration: underline;
+     // font-weight: bold;
+      font-size:25px;
+      letter-spacing: 1px;
+      transition: all 0.3s ease-out;
+      
+    }
       .custom-button {
         border: 1px solid rgb(255, 255, 255);
         display: block;
@@ -53,34 +73,64 @@ page-graph1 {
         border: 1px solid rgb(255, 255, 255);
         display: block;
         box-sizing: border-box;
-      //  margin: 0 auto;
+        margin: 0 auto;
         padding: 8px;
-      //  width: 80%;
-        height:70px;
-        width: 250px;
+       // width: 100%;
+        height:60px;
+        width: 185px;
         background: #fff; /* fallback color for old browsers */background: rgba(201, 200, 200, 0.5);
         border-radius: 8px;
         color: rgb(255, 255, 255);
         //text-align: center;
         text-decoration: none;
        // font-weight: bold;
-        font-size:40px;
+        font-size:30px;
         letter-spacing: 1px;
         transition: all 0.3s ease-out;
         
       }
 
-      .chart-wrapper {
-        width: 60%;
-        height: 60%;
-        display: inline-block;
-        margin: 4em 2em;
-        position: absolute;
-        top: 95px;
-        left: 350px;
-        
-        
-     }
+      //https://forum.ionicframework.com/t/support-for-various-mobile-devices-ios-android-phones-tablets-how-to-manage/17406/2
+ /* Larger than a phone */
+@media (min-width: 700px) {
+  map, div[map] {
+    width: 95%;
+    height: 425px;
+  }
+  .chart-wrapper {
+    width: 75%;
+    height: 90%;
+    display: inline-block;
+    margin: 4em 2em;
+    position: absolute;
+    top: 65%;
+    left: 10%;
+    
+    
+ }
+
+
+}
+
+/* Small devices such as phone */
+@media (max-width: 700px) {
+  map, div[map] {
+    width: 90%;
+    height: 325px;
+  }
+
+  .chart-wrapper {
+    width: 80%;
+    height: 90%;
+    display: inline-block;
+    margin: 4em 2em;
+    position: absolute;
+    top: 125%;
+    left: 5%;
+    
+    
+ }
+}
   
   
      canvas  {

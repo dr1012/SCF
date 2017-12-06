@@ -6,7 +6,7 @@
                    
                     <ion-col>
                         <h1 id="login-heading2">
-                                <img src="assets/img/Admin_Login_Logo.png" style="display:block;width:40%;height:auto;margin-left:auto;margin-right:auto;"/>
+                                <img src="assets/img/Admin_Login_Logo.png" style="display:block;width:60%;height:auto;margin-left:auto;margin-right:auto;"/>
                           </h1>
                         </ion-col> 
                     
@@ -16,29 +16,29 @@
         <ion-col>
             <!-- Back button, to homepage -->
             <a id="admin-back-button" class="nav-button" href="#" on-click="goToHomepage()" float-left>
-                <div>
-                    <label> &#8239; </label>  
-                    <ion-icon name="arrow-round-back"></ion-icon>  
-                    <label> &#8239; Back</label>       
-                </div>
+                    <div>
+                            <label> &#8239; </label>  
+                            <ion-icon name="arrow-round-back"></ion-icon>  
+                            <label> &#8239; Back</label>       
+                        </div>
               
             </a> 
           </ion-col>
- <!--
+ 
           
           <ion-col>
-            <img src="assets/img/Admin_Login_Logo.png" style="display:block;width:400px;height:auto;margin-left:auto;margin-right:auto;"/>
+           
           </ion-col>
-        -->
+        
 
           <ion-col>
               <!-- Home button, to homepage -->
               <a id="admin-home-button" class="nav-button" href="#" on-click="goToHomepage()" float-right >
-                  <div>
-                      <label> &#8239; </label>  
-                      <ion-icon name="home"></ion-icon>  
-                      <label> &#8239; Home</label>       
-                  </div>
+                    <div>
+                            <label> &#8239; </label>  
+                            <ion-icon name="home"></ion-icon>  
+                            <label> &#8239; Home</label>       
+                        </div>
                 
               </a> 
 
@@ -74,7 +74,7 @@
           <ion-col> 
             <!-- Password Entry Form -->
                     <ion-item>
-                        <ion-input type="password" placeholder="Password Input" class="password-container"></ion-input>
+                        <ion-input type="password" placeholder="Password Input" [(ngModel)]="passwordInput" [ngModelOptions]="{standalone: true}" class="password-container"></ion-input>
                     </ion-item>
                     <br>
                 

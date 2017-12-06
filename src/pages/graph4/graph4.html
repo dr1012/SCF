@@ -4,33 +4,45 @@
     <ion-grid>
         <ion-row>
                 <ion-col>
-                    <a id="admin-home-back-button" class="nav-button" href="#" on-click="goToAdminHome()">
-                            <div>
-                                <label> &#8239; </label>  
-                                <ion-icon name="arrow-round-back"></ion-icon>  
-                                <label> &#8239; Back</label>       
-                            </div>
-                        
-                    </a> 
-                </ion-col>
-                
+                        <h1 id="login-heading2">
+                               <img src="assets/img/Registration_Data_Logo.png" style="display:block;width:65%;height:auto;margin-left:auto;margin-right:auto;" on-click="goToAdminVisitorData()"/>
+                          </h1>
+                        </ion-col> 
+                    
+                     
+                  </ion-row>
 
-                <ion-col>
-                        <img src="assets/img/Registration_Data_Logo.png" style="display:block;width:100%;height:auto;margin-left:auto;margin-right:auto;" on-click="goToAdminVisitorData()"/>
-                </ion-col>
+                  <ion-row>
+                       <ion-col>
+                           <a id="admin-home-back-button" class="nav-button" href="#" on-click="goToAdminVisitorData()" float-left>
+                                   <div>
+                                       <label> &#8239; </label>  
+                                       <ion-icon name="arrow-round-back"></ion-icon>  
+                                       <label> &#8239; Back</label>       
+                                   </div>
+                               
+                           </a> 
+                       </ion-col>
+                       
+                       <ion-col>
 
-                
-                          <ion-col>
-                              <!-- Home button, to homepage -->
-                              <a id="admin-home-home-button" class="nav-button" href="#" on-click="goToHomepage()" float-right  >
-                                  <div>
-                                      <label> &#8239; </label>  
-                                      <ion-icon name="home"></ion-icon>  
-                                      <label> &#8239; Home</label>       
-                                  </div>
-                                
-                              </a> 
-                          </ion-col>
+                              
+
+                       </ion-col>
+                  
+                       
+                                 <ion-col>
+                                     <!-- Home button, to homepage -->
+                                     <a id="admin-home-home-button" class="nav-button" href="#" on-click="goToHomepage()" float-right>
+                                         <div>
+                                             <label> &#8239; </label>  
+                                             <ion-icon name="home"></ion-icon>  
+                                             <label> &#8239; Home</label>       
+                                         </div>
+                                       
+                                     </a> 
+                                 </ion-col>
+                                 
 
                         
                         </ion-row>             
@@ -38,73 +50,67 @@
                     
                 <ion-row>
  
-                      <ion-col> 
-                            
-                            
-                            <br>
-                            <br>
-                            <br>
-
-                           
-
-                        <!-- https://www.webpagefx.com/blog/web-design/semi-transparent-buttons/ -->
-                          <a id="visitor-data-button1" class="semi-transparent-button" href="#" on-click="goToGraph1()">
-                              <div>
-                                  <label> 1) Total Attendance Over The Last Year </label>  
-                                  
-
-                              </div>
-                            
-                          </a>
-
-                          
-                          <br>
-                          <br>
-                           
-                           <a id="visitor-data-button2" class="semi-transparent-button" href="#" on-click="goToGraph2()">
-                                <div>
-                                    
-                                    <label> 2) Regsitered Volunteers Age Demographic </label>       
-                                </div>
+                        <ion-col>  </ion-col>
+                        <ion-col> 
                               
-                            </a>
-
-                            
-                            <br>
-                            <br>
-                             
-                             <a id="visitor-data-button2" class="semi-transparent-button" href="#" on-click="goToGraph3()">
-                                  <div>
+                              
+                              <a id="visitor-data-button1" class="semi-transparent-button" href="#" on-click="goToGraph1()">
+                                      <div>
+                                          <label> 1) Total Attendance Over The Last Year </label>  
+                                          
+          
+                                      </div>
+                                    
+                                  </a>
+          
+                                  <br>
+                                   
+                                   <a id="visitor-data-button2" class="semi-transparent-button" href="#" on-click="goToGraph2()">
+                                        <div>
+                                            
+                                            <label> 2) Regsitered Volunteers Age Demographic </label>       
+                                        </div>
                                       
-                                      <label> 3) Age Demographic by Attendance </label>       
-                                  </div>
-                                
-                              </a>
-
-                              <br>
-                              <br>
-
-                              <a id="visitor-data-button2" class="semi-transparent-button" href="#" on-click="goToGraph4()" >
-                                    <div>                            
-                                        <label> 4) Number Of Visits Over a Month </label>       
-                                    </div>
-                                  
-                                </a>
+                                    </a>
+          
+                                    <br>
+                                   
+                                     
+                                     <a id="visitor-data-button2" class="semi-transparent-button" href="#" on-click="goToGraph3()">
+                                          <div>
+                                              
+                                              <label> 3) Age Demographic by Attendance </label>       
+                                          </div>
+                                        
+                                      </a>
+          
+                                      <br>
+          
+                                      <a id="visitor-data-button2" class="semi-transparent-button2" href="#" on-click="goToGraph4()" >
+                                            <div>                            
+                                                <label> 4) Number Of Visits Over a Month </label>       
+                                            </div>
+                                          
+                                        </a>
+          
+                                        
+                                        <br>
+                                       
+                                       <a id="visitor-data-button3" class="semi-transparent-button"  href="#"  on-click="goToGraphCustom()">
+                                            <div>
+                                                <label> 5) 
+                                                    Select a Custom Graph </label>       
+                                            </div>
+                                          
+                                        </a>  
+                              
   
-                                <br>
-                                <br>
-                               
-                               <a id="visitor-data-button3" class="custom-button" href="#"  on-click="goToGraphCustom()">
-                                    <div>
-                                        <label> 5) &#8239;&#8239;&#8239;&#8239;&#8239;&#8239;
-                                            &#8239;&#8239;&#8239;&#8239;&#8239;&#8239;
-                                            &#8239;&#8239;&#8239;  Custom &#8239; </label>       
-                                    </div>
-                                  
-                                </a>  
-                    
-
-                      </ion-col> 
+                             
+  
+                      
+  
+                        </ion-col> 
+                        <ion-col>  </ion-col>
 
                       <section class="chart-wrapper">
                           <canvas #barChart></canvas>

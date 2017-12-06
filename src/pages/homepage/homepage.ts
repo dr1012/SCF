@@ -3,7 +3,9 @@ import { NavController } from 'ionic-angular';
 import { LoginPage } from '../login/login';
 import { Register0Page } from '../register0/register0';
 import { LogoutPage } from '../logout/logout';
+import { TestPage } from '../test/test';
 import { AdminPage } from '../admin/admin'
+import { QuestionnaireDatabaseProvider } from '../../providers/questionnaire-database/questionnaire-database';
 
 
 @Component({
@@ -12,7 +14,7 @@ import { AdminPage } from '../admin/admin'
 })
 export class HomepagePage {
 
-  constructor(public navCtrl: NavController) {
+  constructor(public navCtrl: NavController,  private questionnairedb: QuestionnaireDatabaseProvider ) {
   }
   goToLogin(){
     this.navCtrl.push(LoginPage);
@@ -22,6 +24,10 @@ export class HomepagePage {
     this.navCtrl.push(LogoutPage);
   }goToAdmin(){
     this.navCtrl.push(AdminPage);
+  }
+
+  Test(){
+    this.navCtrl.push(TestPage);
   }
 
 }

@@ -1,36 +1,27 @@
-
-
-<ion-content padding class="bg-image">
-    <ion-grid>
-        <ion-row>
-                <ion-col>
-                    <a id="admin-home-back-button" class="nav-button" href="#" on-click="goToAdminHome()">
-                            <div>
-                                <label> &#8239; </label>  
-                                <ion-icon name="arrow-round-back"></ion-icon>  
-                                <label> &#8239; Back</label>       
-                            </div>
-                        
-                    </a> 
-                </ion-col>
-                
-                <ion-col></ion-col>
-                <ion-col>
-                        <img src="assets/img/Admin_Logo.png" style="display:block;width:100%;height:auto;margin-left:auto;margin-right:auto;" on-click="goToAdminHome()"/>
-                </ion-col>
-                <ion-col></ion-col>
-                
-                          <ion-col>
-                              <!-- Home button, to homepage -->
-                              <a id="admin-home-home-button" class="nav-button" href="#" on-click="goToHomepage()" >
-                                  <div>
-                                      <label> &#8239; </label>  
-                                      <ion-icon name="home"></ion-icon>  
-                                      <label> &#8239; Home</label>       
-                                  </div>
-                                
-                              </a> 
-                          </ion-col>
-                        </ion-row>
-      </ion-grid>
-    </ion-content>
+<ion-header>
+    <ion-navbar>
+      <ion-title>
+        CSV Data
+      </ion-title>
+      <ion-buttons end>
+        <button ion-button icon-only (click)="downloadCSV()">
+            <ion-icon name="download"></ion-icon>
+          </button>
+      </ion-buttons>
+    </ion-navbar>
+  </ion-header>
+   
+  <ion-content padding>
+    <ion-scroll scrollX="true" scrollY="true" class="data-scroll">
+      <table border="1" class="data-table">
+        <tr>
+          <td *ngFor="let header of headerRow" text-center><b>{{ header }}</b></td>
+        </tr>
+        <tr *ngFor="let row of csvData; let i = index">
+          <td *ngFor="let data of row; let j = index; trackBy: trackByFn">
+            <ion-input type="text" [(ngModel)]="csvData[i][j]"></ion-input>
+          </td>
+        </tr>
+      </table>
+    </ion-scroll>
+  </ion-content>

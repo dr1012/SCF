@@ -55,7 +55,7 @@ page-admin {
         box-sizing: border-box;
         margin: 0 auto;
         padding: 8px;
-      //  width: 80%;
+       // width: 100%;
         height:60px;
         width: 185px;
         background: #fff; /* fallback color for old browsers */background: rgba(201, 200, 200, 0.5);
@@ -69,6 +69,7 @@ page-admin {
         transition: all 0.3s ease-out;
         
       }
+
 
       .password-container {
         background-color:#ffffff;

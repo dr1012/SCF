@@ -83,6 +83,267 @@ export class QuestionnaireDatabaseProvider {
                    var id=this.sqlitedatabase.ReturnID(this.shareprovider.getFirstName(),this.shareprovider.getLastName());
                    return id;
                  }   
+
+                 //not sure if this will work as data.rows.items(i).Field1 Field2 etc  to populate the array.
+                 ReturnQuestionnaireData1(){
+                  return this.db.executeSql('select Field1, Field2, Field3, Field4, Field5, Field6, Other from Question1', [])
+                  .then((data) => {
+                    let returnArray = [];
+                      if(data.rows.length>0){
+                        for(var i=0; i<data.rows.length; i++){
+                          returnArray.push(data.rows.item(i).Field1,data.rows.item(i).Field2,data.rows.item(i).Field3,data.rows.item(i).Field4,data.rows.item(i).Field5,data.rows.item(i).Field6,data.rows.item(i).Other); 
+                        }
+                      
+                      }
+                      return returnArray;
+
+                    }, err => {
+                      console.log('Error: ', err);
+                      return [];
+                    });
+                    
+                  }
+
+                  ReturnQuestionnaireData2(){
+                    return this.db.executeSql('select Field1, Field2, Field3, Field4, Field5, Field6, Other from Question2', [])
+                    .then((data) => {
+                      let returnArray = [];
+                        if(data.rows.length>0){
+                          for(var i=0; i<data.rows.length; i++){
+                            returnArray.push(data.rows.item(i)); 
+                          }
+                        
+                        }
+                        return returnArray;
+  
+                      }, err => {
+                        console.log('Error: ', err);
+                        return [];
+                      });
+                      
+                    }
+
+                    ReturnQuestionnaireData3(){
+                      return this.db.executeSql('select Field1, Field2, Field3, Field4, Field5, Field6 from Question3', [])
+                      .then((data) => {
+                        let returnArray = [];
+                          if(data.rows.length>0){
+                            for(var i=0; i<data.rows.length; i++){
+                              returnArray.push(data.rows.item(i)); 
+                            }
+                          
+                          }
+                          return returnArray;
+    
+                        }, err => {
+                          console.log('Error: ', err);
+                          return [];
+                        });
+                        
+                      }
+
+                      ReturnQuestionnaireData4(){
+                        return this.db.executeSql('select Field1 from Question4', [])
+                        .then((data) => {
+                          let returnArray = [];
+                            if(data.rows.length>0){
+                              for(var i=0; i<data.rows.length; i++){
+                                returnArray.push(data.rows.item(i)); 
+                              }
+                            
+                            }
+                            return returnArray;
+      
+                          }, err => {
+                            console.log('Error: ', err);
+                            return [];
+                          });
+                          
+                        }
+
+                        ReturnQuestionnaireData5(){
+                          return this.db.executeSql('select Field1 from Question5', [])
+                          .then((data) => {
+                            let returnArray = [];
+                              if(data.rows.length>0){
+                                for(var i=0; i<data.rows.length; i++){
+                                  returnArray.push(data.rows.item(i)); 
+                                }
+                              
+                              }
+                              return returnArray;
+        
+                            }, err => {
+                              console.log('Error: ', err);
+                              return [];
+                            });
+                            
+                          }
+
+                          ReturnQuestionnaireData6(){
+                            return this.db.executeSql('select Field1 from Question6', [])
+                            .then((data) => {
+                              let returnArray = [];
+                                if(data.rows.length>0){
+                                  for(var i=0; i<data.rows.length; i++){
+                                    returnArray.push(data.rows.item(i)); 
+                                  }
+                                
+                                }
+                                return returnArray;
+          
+                              }, err => {
+                                console.log('Error: ', err);
+                                return [];
+                              });
+                              
+                            }
+
+                            ReturnQuestionnaireData7(){
+                              return this.db.executeSql('select Field1, Field2, Field3, Other from Question7', [])
+                              .then((data) => {
+                                let returnArray = [];
+                                  if(data.rows.length>0){
+                                    for(var i=0; i<data.rows.length; i++){
+                                      returnArray.push(data.rows.item(i)); 
+                                    }
+                                  
+                                  }
+                                  return returnArray;
+            
+                                }, err => {
+                                  console.log('Error: ', err);
+                                  return [];
+                                });
+                                
+                              }
+
+                              ReturnQuestionnaireData8(){
+                                return this.db.executeSql('select Field1 from Question8', [])
+                                .then((data) => {
+                                  let returnArray = [];
+                                    if(data.rows.length>0){
+                                      for(var i=0; i<data.rows.length; i++){
+                                        returnArray.push(data.rows.item(i)); 
+                                      }
+                                    
+                                    }
+                                    return returnArray;
+              
+                                  }, err => {
+                                    console.log('Error: ', err);
+                                    return [];
+                                  });
+                                  
+                                }
+
+                                ReturnQuestionnaireData9(){
+                                  return this.db.executeSql('select Field1 from Question9', [])
+                                  .then((data) => {
+                                    let returnArray = [];
+                                      if(data.rows.length>0){
+                                        for(var i=0; i<data.rows.length; i++){
+                                          returnArray.push(data.rows.item(i)); 
+                                        }
+                                      
+                                      }
+                                      return returnArray;
+                
+                                    }, err => {
+                                      console.log('Error: ', err);
+                                      return [];
+                                    });
+                                    
+                                  }
+                                  ReturnQuestionnaireData10(){
+                                    return this.db.executeSql('select Field1 from Question10', [])
+                                    .then((data) => {
+                                      let returnArray = [];
+                                        if(data.rows.length>0){
+                                          for(var i=0; i<data.rows.length; i++){
+                                            returnArray.push(data.rows.item(i)); 
+                                          }
+                                        
+                                        }
+                                        return returnArray;
+                  
+                                      }, err => {
+                                        console.log('Error: ', err);
+                                        return [];
+                                      });
+                                      
+                                    }
+                                    ReturnQuestionnaireData11(){
+                                      return this.db.executeSql('select Field1, Field2, Field3, Other from Question11', [])
+                                      .then((data) => {
+                                        let returnArray = [];
+                                          if(data.rows.length>0){
+                                            for(var i=0; i<data.rows.length; i++){
+                                              returnArray.push(data.rows.item(i)); 
+                                            }
+                                          
+                                          }
+                                          return returnArray;
+                    
+                                        }, err => {
+                                          console.log('Error: ', err);
+                                          return [];
+                                        });
+                                        
+                                      }
+
+                                      ReturnQuestionnaireData12(){
+                                        return this.db.executeSql('select Field1, Field2, Field3, Field4 from Question12', [])
+                                        .then((data) => {
+                                          let returnArray = [];
+                                            if(data.rows.length>0){
+                                              for(var i=0; i<data.rows.length; i++){
+                                                returnArray.push(data.rows.item(i)); 
+                                              }
+                                            
+                                            }
+                                            return returnArray;
+                      
+                                          }, err => {
+                                            console.log('Error: ', err);
+                                            return [];
+                                          });
+                                          
+                                        }
+
+                                        ReturnEmergencyContact(){
+                                          return this.db.executeSql('select ID, Name, PhoneNumber, Relationship from Emergency_Contact', [])
+                                          .then((data) => {
+                                            let returnArray = [];
+                                              if(data.rows.length>0){
+                                                for(var i=0; i<data.rows.length; i++){
+                                                  returnArray.push(data.rows.item(i)); 
+                                                }
+                                              
+                                              }
+                                              return returnArray;
+                        
+                                            }, err => {
+                                              console.log('Error: ', err);
+                                              return [];
+                                            });
+                                            
+                                          }
+
+                                          /*public Cursor getData(){
+                                            return IDBCursorWithValue
+                                          }*/
+                                           ReturnData(){
+                                              let buffer: ArrayBuffer;
+                                              
+
+                                           }
+
+                                         
+  
+                    
+            
+                 
       
       
   

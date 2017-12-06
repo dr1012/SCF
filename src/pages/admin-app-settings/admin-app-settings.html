@@ -2,9 +2,18 @@
 
 <ion-content padding class="bg-image">
 <ion-grid>
+        <ion-row>
+                
+                    <h1 id="login-heading2">
+                            <img src="assets/img/Admin_Logo.png" style="display:block;width:40%;height:auto;margin-left:auto;margin-right:auto;"/>
+                      </h1>
+                    
+                 
+              </ion-row>
+
     <ion-row>
             <ion-col>
-                <a id="admin-home-back-button" class="nav-button" href="#" on-click="goToAdminHome()">
+                <a id="admin-home-back-button" class="nav-button" href="#" on-click="goToAdminHome()" float-left>
                         <div>
                             <label> &#8239; </label>  
                             <ion-icon name="arrow-round-back"></ion-icon>  
@@ -15,16 +24,11 @@
             </ion-col>
             
             <ion-col></ion-col>
-            <ion-col>
-
-                    <img src="assets/img/Admin_Logo.png" style="display:block;width:100%;height:auto;margin-left:auto;margin-right:auto;" on-click="goToAdminHome()"/>
-
-            </ion-col>
-            <ion-col></ion-col>
+            
             
                       <ion-col>
                           <!-- Home button, to homepage -->
-                          <a id="admin-home-home-button" class="nav-button" href="#" on-click="goToHomepage()" >
+                          <a id="admin-home-home-button" class="nav-button" href="#" on-click="goToHomepage()" float-right>
                               <div>
                                   <label> &#8239; </label>  
                                   <ion-icon name="home"></ion-icon>  
@@ -33,6 +37,7 @@
                             
                           </a> 
                       </ion-col>
+                      
                     </ion-row>
   </ion-grid>
 </ion-content>

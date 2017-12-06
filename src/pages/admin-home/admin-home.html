@@ -1,10 +1,14 @@
 <ion-content padding class="bg-image">
+        <a id="sync-button1" class="sync-button" href="#"  float-left>
+                <ion-icon name="sync"></ion-icon> 
+                <label>  Sync  </label>
+              </a> 
     <ion-grid>
 
             <ion-row>
                     
                         <h1 id="login-heading2">
-                                <img src="assets/img/Admin_Logo.png" style="display:block;width:20%;height:auto;margin-left:auto;margin-right:auto;"/>
+                                <img src="assets/img/Admin_Logo.png" style="display:block;width:35%;height:auto;margin-left:auto;margin-right:auto;"/>
                           </h1>
                         
                      
@@ -12,7 +16,7 @@
 
         <ion-row>
                 <ion-col>
-                    <a id="admin-home-back-button" class="nav-button" href="#" on-click="goToAdmin()">
+                    <a id="admin-home-back-button" class="nav-button" href="#" on-click="goToAdmin()" float-left>
                             <div>
                                 <label> &#8239; </label>  
                                 <ion-icon name="arrow-round-back"></ion-icon>  
@@ -23,14 +27,11 @@
                 </ion-col>
                 
                 <ion-col></ion-col>
-                <ion-col>
-                   
-                </ion-col>
-                <ion-col></ion-col>
+                
                 
                           <ion-col>
                               <!-- Home button, to homepage -->
-                              <a id="admin-home-home-button" class="nav-button" href="#" on-click="goToHomepage()"  >
+                              <a id="admin-home-home-button" class="nav-button" href="#" on-click="goToHomepage()" float-right>
                                   <div>
                                       <label> &#8239; </label>  
                                       <ion-icon name="home"></ion-icon>  
@@ -48,15 +49,14 @@
                             </ion-row>
                             
                         <ion-row>
-                                <ion-col></ion-col> 
-                                <ion-col></ion-col>   
+  
                               <ion-col> 
                                 <!-- https://www.webpagefx.com/blog/web-design/semi-transparent-buttons/ -->
-                                  <a id="admin-homepage-button1" class="semi-transparent-button" href="#" on-click="goToAdminVisitorHistory()">
+                                  <a id="admin-homepage-button1" class="semi-transparent-button" href="#" on-click="goToAdminVisitorHistory()" style="display:block;margin-left:auto;margin-right:auto;">
                                       <div>
-                                          <label> &#8239; </label>  
+                                          <label>  </label>  
                                           <ion-icon name="clock"></ion-icon>  
-                                          <label> &#8239; &#8239; Visitor History</label>       
+                                          <label>  Visitor History</label>       
                                       </div>
                                     
                                   </a>
@@ -64,62 +64,54 @@
                                 <br>
                                 <br>
                               </ion-col> 
-                              <ion-col></ion-col> 
-                              <ion-col></ion-col> 
-                              
+
                             </ion-row>  
                               
                             <ion-row>
-                                <ion-col></ion-col> 
-                                <ion-col></ion-col> 
+<!-- &#8239; -->
                                 <ion-col>
-                                    <a id="admin-homepage-button2" class="semi-transparent-button" href="#" on-click="goToAdminVisitorData()">
-                                        <label> &#8239; </label> 
+                                    <a id="admin-homepage-button2" class="semi-transparent-button" href="#" on-click="goToAdminVisitorData()" style="display:block;margin-left:auto;margin-right:auto;">
+                                        <label> </label> 
                                       <ion-icon name="stats"></ion-icon>  
-                                      <label> &#8239; Registration Data</label>     
+                                      <label>  Registration Data</label>     
                                     </a>   
                               <br>
                               <br>
                             
                             </ion-col> 
-                            <ion-col></ion-col> 
-                            <ion-col></ion-col> 
+
                             </ion-row>
                             
                             <ion-row>
-                                <ion-col></ion-col> 
-                                <ion-col></ion-col> 
+
                                 <ion-col>
-                                    <a id="admin-homepage-button3" class="semi-transparent-button" href="#" on-click="goToAdminAppSettings()">
-                                        <label> &#8239; </label>   
+                                    <a id="admin-homepage-button3" class="semi-transparent-button" href="#" on-click="goToAdminAppSettings()" style="display:block;margin-left:auto;margin-right:auto;">
+                                        <label> </label>   
                                       <ion-icon name="settings"></ion-icon>    
-                                        <label>  &#8239; &#8239; &#8239; App Settings</label>
+                                        <label>   App Settings</label>
                                         
                                     </a> 
                                     
                               <br>
                               <br>
                             </ion-col> 
-                            <ion-col></ion-col> 
-                            <ion-col></ion-col> 
+
                             </ion-row>
 
                             <ion-row>
-                                    <ion-col></ion-col> 
-                                    <ion-col></ion-col> 
+
                                     <ion-col>
-                                        <a id="homepage-button3" class="semi-transparent-button" href="#" on-click="goToHomepage()">
-                                            <label> &#8239; </label>   
+                                        <a id="admin-homepage-button4" class="semi-transparent-button" href="#" on-click="goToHomepage()" style="display:block;margin-left:auto;margin-right:auto;">
+                                            <label></label>   
                                           <ion-icon name="log-out"></ion-icon>    
-                                            <label> &#8200; Logout of Admin </label>
+                                            <label>Logout of Admin </label>
                                             
                                         </a> 
                                         
                                   <br>
                                   <br>
                                 </ion-col> 
-                                <ion-col></ion-col> 
-                                <ion-col></ion-col> 
+
                                 </ion-row>
                             
                             

@@ -30,6 +30,7 @@ import { AdminPage } from '../pages/admin/admin';
 import { TapRevealComponent } from '../components/tap-reveal/tap-reveal';
 import { SQLite, SQLiteObject } from '@ionic-native/sqlite';
 import { IonicStorageModule } from '@ionic/storage';
+import { TestPage } from '../pages/test/test';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -50,6 +51,7 @@ import { Graph4Page } from '../pages/graph4/graph4';
 import { GraphCustomPage } from '../pages/graph-custom/graph-custom';
 import { ForgotAdminPasswordPage } from '../pages/forgot-admin-password/forgot-admin-password';
 import { QuestionnaireDatabaseProvider } from '../providers/questionnaire-database/questionnaire-database';
+import { LoginDatabaseProvider } from '../providers/login-database/login-database';
 
 
 @NgModule({
@@ -73,6 +75,7 @@ import { QuestionnaireDatabaseProvider } from '../providers/questionnaire-databa
     AdminVisitorHistoryPage,
     AdminVisitorDataPage,
     TapRevealComponent,
+    TestPage,
     Graph1Page,
     Graph2Page,
     Graph3Page,
@@ -105,6 +108,7 @@ import { QuestionnaireDatabaseProvider } from '../providers/questionnaire-databa
     Register1Page,
     Register2Page,
     Register3Page,
+    TestPage,
     Questionnaire0Page,
     Questionnaire3Page,
     Questionnaire4Page,
@@ -141,7 +145,8 @@ import { QuestionnaireDatabaseProvider } from '../providers/questionnaire-databa
     ShareProvider,
     File,
     sqlitedatabase,
-    QuestionnaireDatabaseProvider
+    QuestionnaireDatabaseProvider,
+    LoginDatabaseProvider
   ]
 })
 export class AppModule {}

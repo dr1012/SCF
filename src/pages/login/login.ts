@@ -45,6 +45,12 @@ export class LoginPage {
           })
     }
 
+    retrieveSqlData(){
+        let data:any[];
+        data = this.sqlitedatabase.returnFinal;  //trying to populate an array with data from an SQLite querry. returnFinal() is the function containing the SQLite querry located in the sqlitedatabase.ts file
+        //this is just a dummy method but the idea is to retrieve a person's data from the database and use it in a working format (here I tried an array but it could be any format).
+    }
+
 
     combine(): void{
         this.initializeItems();
@@ -104,7 +110,7 @@ export class LoginPage {
         this.navCtrl.pop();
     }
 
-
+   
 
 
 }
