@@ -48,7 +48,7 @@ export class LoginDatabaseProvider {
       })
       .catch(e => console.log(e));
   }
-
+/*
   insertLoginData(firstName: String, lastName: String, data: any[]): void {
 
     var Id = this.sqlitedatabase.ReturnID(firstName, lastName);
@@ -86,7 +86,7 @@ export class LoginDatabaseProvider {
       return [];
     });
   }
-
+*/
   returnLogDataForCsv(logData: any[][]) {
       this.db.executeSql("SELECT * FROM LogTable", {}).then((data) => {
       if (data.rows.length > 0) {

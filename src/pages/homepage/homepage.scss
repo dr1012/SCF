@@ -1,6 +1,14 @@
 page-homepage {
 
     .bg-image {
+        //background-image: url('../assets/img/background-example.jpeg');
+        background-image: url('../assets/img/winter-background.jpg');
+        background-repeat: no-repeat;
+        background-position: center;
+        //background-size: contain;
+    }
+
+    .bg-image2 {
         background-image: url('../assets/img/background-example.jpeg');
         background-repeat: no-repeat;
         background-position: center;
@@ -28,5 +36,29 @@ page-homepage {
         transition: all 0.3s ease-out;
         
       }
+
+      .admin-button {
+        border: 1px solid rgba(233, 233, 233, 0.767);
+        display: block;
+        box-sizing: border-box;
+        //margin: 0 auto;
+       // padding: 8px;
+        //width: 125%;
+        //height: 75%;
+        height:40px;
+        width: 40px;
+        background: #fff; /* fallback color for old browsers */background: rgba(201, 200, 200, 0.5);
+        border-radius: 8px;
+        color: rgb(255, 255, 255);
+        text-align: center;
+        text-decoration: none;
+        font-weight: bold;
+        font-size:26px;
+        letter-spacing: 1px;
+        transition: all 0.3s ease-out;
+        
+      }
+
+    
 
 }

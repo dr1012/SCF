@@ -1,5 +1,5 @@
-import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {Injectable} from '@angular/core';
 
 
 /*
@@ -10,49 +10,84 @@ import { Injectable } from '@angular/core';
 */
 @Injectable()
 export class ShareProvider {
-  private new_registration =  []; 
-  private registration_info = {};
-  private user_id=0;
+    private new_registration = [];
+    private new_questionnaire = [];
+    private registration_info = {};
+    private user_id = 0;
 
-  constructor(public http: HttpClient) {
-    
-  }
+    // This variable indicates where the php files can be served from
+    private backend_root_url = "http://localhost/SCF/index.php/api/";
 
-getFirstName(){
-  return this.new_registration[0];
-} 
+    constructor(public http: HttpClient) {
+        console.log('Hello ShareProvider Provider');
+    }
 
-getLastName(){
-  return this.new_registration[1];
-}   
+    getFirstName(){
+        return this.new_registration[0];
+      } 
+      
+      getLastName(){
+        return this.new_registration[1];
+      }   
 
-getElements(){
- return this.new_registration;
-}
+      
 
-clear(){
-  this.new_registration = [];
-}
+    getElements() {
+        return this.new_registration;
+    }
 
-addElements(element){
-  this.new_registration.push(element);
-}
+    addElements(element) {
+        this.new_registration.push(element);
+    }
 
-updateREgistrationInfo(key, value){
-  this.registration_info[key]=value;
-}
+    updateRegistrationInfo(key, value) {
+        this.registration_info[key] = value;
+    }
 
-getRegistrationInfo(){
-  return this.registration_info;
-}
+    getRegistrationInfo() {
+        return this.registration_info;
+    }
 
-getRegistrationInfoElemet(key){
-  return this.registration_info[key];
-}
-getUserid(){
-  return this.user_id;
-}
-setUserId(user_id){
-  this.user_id=user_id;
-}
+    getRegistrationInfoElement(key) {
+        return this.registration_info[key];
+    }
+
+    getUserId() {
+        return this.user_id;
+    }
+
+    setUserId(user_id) {
+        this.user_id = user_id;
+    }
+
+    getBackendRootUrl():string {
+        return this.backend_root_url;
+    }
+
+    clear() {
+        this.new_registration = [];
+    }
+
+
+    /* Questionaires */
+    getQuestionnaireElement(i) {
+        return this.new_questionnaire[i];
+    }
+
+    getQuestionnaireElements() {
+        return this.new_questionnaire;
+    }
+
+    QuestionnaireClear() {
+        this.new_questionnaire = [];
+    }
+
+    QuestionnaireAddElements(element) {
+        this.new_questionnaire.push(element);
+    }
+
+    QuestionnaireGetElement(i) {
+        return this.new_questionnaire[i];
+    }
+
 }

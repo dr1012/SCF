@@ -17,6 +17,10 @@ import { HomepagePage } from '../homepage/homepage';
 })
 export class AdminAppSettingsPage {
 
+  winter: boolean = true;
+  summer: boolean = false;
+  autumn: boolean = false;
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
@@ -30,6 +34,24 @@ export class AdminAppSettingsPage {
 
   goToAdminHome(){
     this.navCtrl.push(AdminHomePage);
+  }
+
+  summerToggle(){
+    this.winter = false;
+    this.summer = true;
+    this.autumn = false;
+  }
+
+  winterToggle(){
+    this.winter = true;
+    this.summer = false;
+    this.autumn = false;
+  }
+
+  autumnToggle(){
+    this.winter = false;
+    this.summer = false;
+    this.autumn = true;
   }
 
 }

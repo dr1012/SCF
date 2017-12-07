@@ -1,10 +1,29 @@
 page-admin-app-settings {
 
     .bg-image {
-        background-image: url('../assets/img/background-example.jpeg');
+        //background-image: url('../assets/img/background-example.jpeg');
+        background-image: url('../assets/img/winter-background.jpg');
         background-repeat: no-repeat;
         background-position: center;
         //background-size: contain;
+    }
+
+    .summerBackground{
+      background-image: url('../assets/img/background-example.jpeg');
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+
+    .winterBackground{
+      background-image: url('../assets/img/winter-background.jpg');
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+
+    .autumnBackground{
+      background-image: url('../assets/img/autumn-background.jpg');
+      background-repeat: no-repeat;
+      background-position: center;
     }
 
     .semi-transparent-button {
@@ -19,7 +38,7 @@ page-admin-app-settings {
         background: #fff; /* fallback color for old browsers */background: rgba(201, 200, 200, 0.5);
         border-radius: 8px;
         color: rgb(255, 255, 255);
-        //text-align: center;
+        text-align: center;
         text-decoration: none;
        // font-weight: bold;
         font-size:40px;

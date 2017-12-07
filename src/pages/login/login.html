@@ -1,81 +1,120 @@
 
-<ion-content padding >
-  <ion-grid>
-     <ion-row>
-       <ion-col></ion-col>
-       <ion-col></ion-col>
-       <ion-col>
-         <h1 id="login-heading2" style="color:#156835;text-align:center;font-size:50px;">
-           Login
-       </h1>
-   </ion-col> 
-   <ion-col></ion-col>
-   <ion-col></ion-col> 
-</ion-row>
-<ion-row>
-<ion-col>
-  <button id="login-button11" ion-button  on-click="goBack()" color="light" normal style="height: 50px; width: 70px; font-weight:1200;color:#156835;">
-     <ion-icon name="arrow-back"></ion-icon>
-     Back
- </button>
-</ion-col>
-
-<ion-col>
-
-</ion-col> 
-<button id="login-button10" ion-button  on-click="goToHomepage()" color="light" normal style="height: 50px; width: 70px; font-weight:1200;color:#156835;">
-   <ion-icon name="home"></ion-icon>
-   Home
-</button>
-</ion-row>
-<ion-row>
-  <br>
-  <br>
-  <br>
-  <h2 id="login-heading1" style="color:#808080;">
-     Please start typing in your last name and choose from the drop-down list
- </h2>
- <br>
- <br>
- <br>
- <br>
-</ion-row>
-
-
-
-<ion-row>
-   <ion-col>
-       <h3 id="login-heading4" style="color:#808080;">Last Name:</h3>
-   </ion-col>
-   <ion-col>
-    <ion-searchbar  
-    
-    
-    placeholder="Last Name" style="width:200px" (ionInput)="getItems($event)">
-</ion-searchbar>
-<ion-list>
-        <ion-item *ngFor="let item of items3" (click)='setSelection(item);'>
-            <h2>{{ item.FirstName }} {{ item.LastName }} </h2>
-          </ion-item>   
-    </ion-list>
+<ion-content padding class="bg-image" >
+    <ion-grid>
+       <ion-row>
   
+        <h1 id="login-heading2">
+          <img src="assets/img/Login-Logo.png" style="display:block;width:35%;height:auto;margin-left:auto;margin-right:auto;"/>
+    </h1>
+  
+  </ion-row>
+  <ion-row>
+    <ion-col>
+        <a id="login-back-button" class="nav-button" href="#" on-click="goBack()" float-left>
+                <div>
+                    <label> &#8239; </label>  
+                    <ion-icon name="arrow-round-back"></ion-icon>  
+                    <label> &#8239; Back</label>       
+                </div>
+            
+        </a> 
+    </ion-col>
+    
+    <ion-col></ion-col>
+    
+    
+              <ion-col>
+                  <!-- Home button, to homepage -->
+                  <a id="admin-home-home-button" class="nav-button" href="#" on-click="goToHomepage()" float-right>
+                      <div>
+                          <label> &#8239; </label>  
+                          <ion-icon name="home"></ion-icon>  
+                          <label> &#8239; Home</label>       
+                      </div>
+                    
+                  </a> 
+              </ion-col>
+              
+            </ion-row>
+  <ion-row>
+      <br>
       
-       <br><br>
-   </ion-col>
-   <ion-col></ion-col>
-</ion-row>
-
-<br><br>
-
-<ion-row>
-   <ion-col>
-       <button id="login-button27" ion-button on-click = "loginToApp()" color="light" large style="font-weight:600;color:#156835;">
-           Login
-       </button>
-   </ion-col>
-   <ion-col></ion-col>
-</ion-row>
-
-
-</ion-grid>   
-</ion-content>
+      <ion-col>
+    <h2 class = "white-text" id="login-heading1" style="color:#ffffff;" align="center">
+       Please start typing in your last name and choose from the drop-down list
+   </h2>
+  </ion-col>
+  
+  </ion-row>
+  
+  
+  
+  <ion-row>
+  <!--
+     <ion-col>
+         <h3 id="login-heading4" style="color:#ffffff;">Last Name:</h3>
+     </ion-col>
+    
+     <ion-col>
+  
+       
+      <ion-searchbar  
+      
+      
+      placeholder="Last Name" style="width:200px" (ionInput)="getItems($event)">
+  
+    </ion-searchbar>
+  <ion-list>
+          <ion-item *ngFor="let item of items3" (click)='setSelection(item);'>
+              <h2>{{ item.FirstName }} {{ item.LastName }} </h2>
+            </ion-item>   
+      </ion-list>
+        <br><br>
+    
+        
+       
+     </ion-col>
+     <ion-col></ion-col>
+     -->
+  </ion-row>
+  <br>
+  <br>
+  
+  <ion-row>
+      <ion-col></ion-col>
+     <ion-col>
+  
+  
+      <form id="Login-form2">
+          <ion-searchbar  
+              #q (keyup.enter)="onEnter()" 
+              [(ngModel)]="lastNameInput" 
+              [ngModelOptions]="{standalone: true}" 
+              (ionInput)="getItems($event)" 
+              animation = "false"
+              placeholder="Last Name"
+              class="full-width-select"
+              style="width:300px">
+          </ion-searchbar>
+          <ion-list *ngIf="showList">
+            <ion-item *ngFor="let item of items" (click)='setSelection(item);'>
+                {{ item.first_name }} {{item.last_name}}
+            </ion-item>
+        </ion-list>
+        </form>
+  
+  
+        
+        
+     </ion-col>
+     <ion-col>
+            <button id="login-button27" ion-button on-click = "loginToApp()" color="light" large style="font-weight:600;color:#156835;">
+                    {{loginText}}
+                </button>
+      </ion-col>  
+     <ion-col></ion-col>
+  </ion-row>
+  
+  
+  </ion-grid>   
+  </ion-content>

@@ -1,6 +1,6 @@
 
 
-<ion-content padding class="bg-image">
+<ion-content padding [class.winterBackground]="winter"  [class.summerBackground]="summer"  [class.autumnBackground]="autumn" >
 <ion-grid>
         <ion-row>
                 
@@ -39,5 +39,69 @@
                       </ion-col>
                       
                     </ion-row>
+
+
+
+
+                    <ion-row>
+                        <ion-col></ion-col> 
+                        <ion-col></ion-col>   
+                      <ion-col> 
+                        <!-- https://www.webpagefx.com/blog/web-design/semi-transparent-buttons/ -->
+                          <a id="homepage-button1" class="semi-transparent-button" href="#" on-click="autumnToggle()">
+                              <div> 
+                                <ion-icon name="leaf"></ion-icon> 
+                                  <label> Autumn Theme</label>       
+                              </div>
+                            
+                          </a>
+                    
+                        <br>
+                        <br>
+                      </ion-col> 
+                      <ion-col></ion-col> 
+                      <ion-col></ion-col> 
+                      
+                    </ion-row>  
+                      
+                    <ion-row>
+                        <ion-col></ion-col> 
+                        <ion-col></ion-col> 
+                        <ion-col>
+                            <a id="homepage-button2" class="semi-transparent-button" href="#" on-click="winterToggle()">
+                                <ion-icon name="snow"></ion-icon> 
+                                <label> Winter Theme</label>     
+                            </a>   
+                      <br>
+                      <br>
+                    
+                    </ion-col> 
+                    <ion-col></ion-col> 
+                    <ion-col></ion-col> 
+                    </ion-row>
+                    
+                    <ion-row>
+                        
+                        <ion-col></ion-col> 
+                        <ion-col></ion-col> 
+                        <ion-col>
+                            <a id="homepage-button3" class="semi-transparent-button" href="#" on-click="summerToggle()">
+                                <ion-icon name="sunny"></ion-icon> 
+                                <label> Summer Theme</label>
+                                
+                            </a> 
+                            
+                      <br>
+                      <br>
+                    
+                    </ion-col> 
+                    <ion-col></ion-col> 
+                    <ion-col></ion-col> 
+                    
+                    
+                    </ion-row>
   </ion-grid>
+
+
+  
 </ion-content>

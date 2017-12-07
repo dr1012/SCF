@@ -30,7 +30,7 @@ export class Questionnaire9Page {
     this.navCtrl.pop();
   }
   
-  goQuestionnaire9(){
+  goQuestionnaire10(){
   
     if(this.answer1||this.answer2){
       this.addData();

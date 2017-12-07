@@ -33,6 +33,7 @@ export class Questionnaire5Page {
                     .then(() => {
                       console.log("Further information added");})
                       .catch(e => console.log(e));  
+                      this.navCtrl.push(Questionnaire6Page);
     
     }
   

@@ -5,55 +5,58 @@ import { Register4Page } from '../register4/register4';
 import { ShareProvider } from '../../providers/share/share';
 
 
-
 @Component({
-  selector: 'page-register3',
-  templateUrl: 'register3.html'
+    selector: 'page-register3',
+    templateUrl: 'register3.html'
 })
 export class Register3Page {
-  emailInput = '';
+    emailInput = '';
 
 
-  constructor(public navCtrl: NavController, private alertController: AlertController, private shareprovider: ShareProvider)  {
-    
-  }
-
-  goToHomepage(){
-    this.navCtrl.push(HomepagePage);
-    this.shareprovider.clear();
-  }
-  goBack(){
-    this.navCtrl.pop();
-  }
-
-  public goRegister4(){
-    if(this.emailInput){
-      if(this.emailInput.includes("@")){
-  
-   this.shareprovider.addElements(this.emailInput); //this push function apends values. Does not delete what is already  there
-   console.log(this.shareprovider.getElements()); //testing the array
-    this.navCtrl.push(Register4Page);
-      }
-      else{
-        let addTodoAlert=this.alertController.create({
-          title: "Warning!!", 
-          message: "Please a valid email address",
-        });
-        addTodoAlert.present();
-      }
+    constructor(public navCtrl: NavController, 
+        private alertController: AlertController, 
+        private shareprovider: ShareProvider)  {
 
     }
-    else{
-      let addTodoAlert=this.alertController.create({
-        title: "Warning!!", 
-        message: "Please enter your email address",
-      });
-      addTodoAlert.present();
-    }
-    
-  
-  }
 
-  
+    goToHomepage(){
+        this.navCtrl.push(HomepagePage);
+    }
+
+    goBack(){
+        this.navCtrl.pop();
+    }
+
+    public goRegister4(){
+        if(this.emailInput){
+            if(this.emailInput.includes("@")){
+                this.shareprovider.updateRegistrationInfo('email_address',this.emailInput);
+                console.log(this.shareprovider.getRegistrationInfo());
+
+                this.shareprovider.addElements(this.emailInput); //this push function apends values. Does not delete what is already  there
+                console.log(this.shareprovider.getElements()); //testing the array
+                this.navCtrl.push(Register4Page);
+            }
+            else{
+                let addTodoAlert=this.alertController.create({
+                    title: "Warning!!", 
+                    message: "Please a valid email address",
+                });
+                addTodoAlert.present();
+            }
+
+        }
+        else{
+            let addTodoAlert=this.alertController.create({
+                title: "Warning!!", 
+                message: "Please enter your email address",
+            });
+            addTodoAlert.present();
+        }
+
+
+    }
+
+
 }
 

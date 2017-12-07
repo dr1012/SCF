@@ -13,7 +13,7 @@
     
           <button ion-button (click)="readDatabaseData()">
           <ion-label>ReadDataBaseData()</ion-label>
-          </button>    
+          </button>     
     </ion-buttons>
   </ion-navbar>
 
@@ -26,7 +26,7 @@
       <tr>
         <td *ngFor="let header of Header" text-center><b> {{header}}</b></td>
       </tr>
-      <tr *ngFor="let row of Data; let i = index">
+      <tr *ngFor="let row of returnArray; let i = index">
         <td *ngFor="let data of row; let j=index; trackBy: trackByFn">
           <ion-input type="text" [(ngModel)] = "Data[i][j]"></ion-input>
         </td>

@@ -1,75 +1,97 @@
-<ion-content padding >
+<ion-content padding class="bg-image">
     <ion-grid>
-       <ion-row>
-         <ion-col></ion-col>
-         <ion-col></ion-col>
-         <ion-col>
-             <h1 id="logout-heading5" style="color:#156835;text-align:center;font-size:50px;">
-                 Logout
-               </h1>
-             </ion-col> 
-         <ion-col></ion-col>
-         <ion-col></ion-col> 
-       </ion-row>
+        <ion-row>
+            
+                  <h1 id="login-heading2">
+                    <img src="assets/img/Logout-Logo.png" style="display:block;width:40%;height:auto;margin-left:auto;margin-right:auto;"/>
+              </h1>
+            
+            </ion-row>
+            <ion-row>
+              <ion-col>
+                  <a id="login-back-button" class="nav-button" href="#" on-click="goBack()" float-left>
+                          <div>
+                              <label> &#8239; </label>  
+                              <ion-icon name="arrow-round-back"></ion-icon>  
+                              <label> &#8239; Back</label>       
+                          </div>
+                      
+                  </a> 
+              </ion-col>
+              
+              <ion-col></ion-col>
+              
+              
+                        <ion-col>
+                            <!-- Home button, to homepage -->
+                            <a id="admin-home-home-button" class="nav-button" href="#" on-click="goToHomepage()" float-right>
+                                <div>
+                                    <label> &#8239; </label>  
+                                    <ion-icon name="home"></ion-icon>  
+                                    <label> &#8239; Home</label>       
+                                </div>
+                              
+                            </a> 
+                        </ion-col>
+                        
+                      </ion-row>
+
       <ion-row>
-        <ion-col>
-          <button id="back_button2" ion-button  on-click="goBack()" color="light" normal style="height: 50px; width: 70px; font-weight:1200;color:#156835;">
-             <ion-icon name="arrow-back"></ion-icon>
-             Back
-           </button>
-        </ion-col>
-       
-       <ion-col>
-         
-       </ion-col> 
-       <button id="home_button2" ion-button  on-click="goToHomepage()" color="light" normal style="height: 50px; width: 70px; font-weight:1200;color:#156835;">
-           <ion-icon name="home"></ion-icon>
-           Home
-         </button>
-      </ion-row>
-      <ion-row>
         <br>
         <br>
-        <br>
-         <h2 id="logout-heading1" style="color:#808080;">
+        
+         <h2 id="logout-heading1" class="white-text">
              Please start typing in your last name and choose from the drop-down list
            </h2>
            <br>
            <br>
-           <br>
-           <br>
+  
       </ion-row>
    
      
    
    <ion-row>
-   <ion-col>
-       <h3 id="login-heading4" style="color:#808080;">
-           Last Name:
-         </h3>
-   </ion-col>
-   <ion-col>
-       <form id="logout-form1">
-           <ion-item id="logout-input1">
-             <ion-label></ion-label>
-             <ion-input type="text" placeholder="" style="width:200px"></ion-input>
-           </ion-item>
-         </form>
-   <br>
-   <br>
-   <br>
-   <br>
-   </ion-col>
-   <ion-col></ion-col>
-   </ion-row>
-   <ion-row>
-     <br>
-     <br>
-       <button id="login-button27" ion-button color="light" large style="font-weight:600;color:#156835;">
-           Logout
-         </button>
-   </ion-row>
+        <ion-col></ion-col>
+        <ion-col>
+          <form id="Logout-form2">
+            <ion-searchbar  
+                #q (keyup.enter)="onEnter()" 
+                [(ngModel)]="lastNameInput" 
+                [ngModelOptions]="{standalone: true}" 
+                (ionInput)="getItems($event)" 
+                animation = "false"
+                placeholder="Last Name"
+                class="full-width-select"
+                style="width:300px">
+            </ion-searchbar>
+            <ion-list *ngIf="showList">
+              <ion-item *ngFor="let item of items" (click)='setSelection(item);'>
+                  {{ item.first_name }} {{item.last_name}}
+              </ion-item>
+          </ion-list>
+          </form>
+
+        </ion-col>
+        <ion-col>
+                <button id="login-button27" ion-button on-click = "logoutFromApp()" color="light" large style="font-weight:600;color:#156835;">
+                        {{logoutText}}
+                    </button>
+          
+        </ion-col>
+      </ion-row>  
    
-     
+   
+<ion-row>
+
+  <ion-col>
+       
+
+  </ion-col> 
+    
+         
+        
+ </ion-row>
+   
+    
    </ion-grid>   
    </ion-content>

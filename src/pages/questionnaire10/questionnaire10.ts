@@ -32,7 +32,8 @@ export class Questionnaire10Page {
                   this.questionnairedb.db.executeSql('insert into Question10 (ID, Field1) values (?,?)',[id,this.informationInput]) 
                     .then(() => {
                       console.log("Further information added");})
-                      .catch(e => console.log(e));  
+                      .catch(e => console.log(e));
+                      this.navCtrl.push(Questionnaire11Page);  
     
     }
   

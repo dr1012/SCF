@@ -27,92 +27,20 @@ export class TestPage {
   db: SQLiteObject
 
   items: any;
-
+  returnArray = [];
   csvData: any[]  =[];
   Data :any[][];
   headerRow : any[] =[];
-  Header: String[] = ["ID", "First Name", "Last Name", "LoginDate", "LoginTime", "LogoutDate", "LogoutTime"];
+  Header: String[] = ["ID", "First Name", "Last Name", "Email", "Phone", "Address", "Postcode"];
   constructor(public httpclient: HttpClient, public sqlite: SQLite, private sqlitedatabase: sqlitedatabase, private shareprovider: ShareProvider, private http: Http, private logindatabase:LoginDatabaseProvider) {
-    this.createDatabaseFile(); 
+    this.getallData();
   }
   
 
-  createDatabaseFile(): void{
-    this.sqlite.create({      //creates new database
-      name: 'DATABASE_FILENAME',   
-      location: 'assets/dummydb.db'
-    })
-      .then((db: SQLiteObject) => {
-        console.log('Database created!');
-        this.db = db;  //assign
-        this.createTables(); //create new tables
-        this.populateDatabase2();
-      })
-      .catch(e => console.log(e));
-  }
-
-  createTables(): void {
-    this.db.executeSql('CREATE TABLE IF NOT EXISTS `LogTable2` ( `ID` INTEGER, `FirstName` TEXT, `LastName` TEXT, `LoginDate` TEXT, `LoginTime` TEXT, `LogoutDate` TEXT, `LogoutTime` TEXT )', {})
-      .then(() => {
-        console.log("Log table2 created");
-      })
-      .catch(e => console.log(e));
-  }
-
-  populateDatabase2(){
-    this.logindatabase.db.executeSql('insert into LogTable2 (ID, FirstName, LastName, LoginDate, LoginTime, LogoutDate, LogoutTime) values ("1","David","Rudolf","10/12/13","12:00","10/12/13","16:00")',[]) //Executes an SQL command
-    .then(() => {
-      console.log("Login data2 added");
-    })
-    .catch(e => console.log(e));
-    this.logindatabase.db.executeSql('insert into LogTable2 (ID, FirstName, LastName, LoginDate, LoginTime, LogoutDate, LogoutTime) values ("5","Ed","Gerrad","11/12/13","09:00","15/12/13","17:00")',[]) //Executes an SQL command
-    .then(() => {
-      console.log("Login data2 added");
-    })
-    .catch(e => console.log(e));
-
-
-  }
-
-
-  private readDatabaseData() {
-    this.http.get('assets/database.db')
-    .map(res => res.json())
-    .subscribe(response => {
-        this.items = response.data;
-
-      });
-      console.log(this.items);
-      console.log("stringify: "+JSON.stringify(this.items))
-  }
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-  populateDatabase(){
-    this.logindatabase.db.executeSql('insert into LogTable (ID, FirstName, LastName, LoginDate, LoginTime, LogoutDate, LogoutTime) values ("1","David","Rudolf","10/12/13","12:00","10/12/13","16:00")',[]) //Executes an SQL command
-    .then(() => {
-      console.log("Login data added");
-    })
-    .catch(e => console.log(e));
-    this.logindatabase.db.executeSql('insert into LogTable (ID, FirstName, LastName, LoginDate, LoginTime, LogoutDate, LogoutTime) values ("5","Ed","Gerrad","11/12/13","09:00","15/12/13","17:00")',[]) //Executes an SQL command
-    .then(() => {
-      console.log("Login data added");
-    })
-    .catch(e => console.log(e));
-
-
-  }
 
 
 
@@ -140,14 +68,49 @@ export class TestPage {
 
   }
 
-  
+  populateArray(){
 
- /* downloadCSV(){
-    
+  }
+  
+getallData(){
+  this.sqlitedatabase.returnAll()
+  .then((data) => {
+      if (data == null) {
+          console.log("no data in table");
+          return [];
+      }
+
+      this.returnArray = [];
+      if (data.rows.length > 0) {
+          for (var i = 0; i < data.rows.length; i++) {
+              this.returnArray.push([
+                  data.rows.item(i).id,
+                  data.rows.item(i).first_name,
+                  data.rows.item(i).last_name,
+                  data.rows.item(i).email_address, 
+                  data.rows.item(i).phone_number, 
+                  data.rows.item(i).address, 
+                  data.rows.item(i).postcode,
+              ]);
+          }
+
+      }
+     
+
+  }, err => {
+      console.log('Error: ', err);
+      return [];
+  }); 
+}
+
+
+  downloadCSV(){
+
+  
 
    let csv = papa.unparse({
       fields: this.Header,
-      data: this.logindatabase.returnLogDataForCsv()
+      data: this.sqlitedatabase.returnFinal()
     }); //parses an array of arrays, first internal array is headerRow, all other arrays are data rows
         //in our case puts the array data back into
 
@@ -162,7 +125,7 @@ export class TestPage {
   a.click();
 document.body.removeChild(a);
 
-  }*/
+  }
 
   trackByFn(index: any, item: any){
     return index
