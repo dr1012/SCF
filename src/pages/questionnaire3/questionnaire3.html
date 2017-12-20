@@ -1,117 +1,86 @@
 
 <ion-content padding class="bg-image">
-  <ion-grid>
-      <ion-row>
-          
+    <ion-grid>
+        <ion-row>
+
             <h1 id="login-heading2">
-                  <img src="assets/img/Questionnaire-Logo.png" style="display:block;width:70%;height:auto;margin-left:auto;margin-right:auto;"/>
+                <img src="assets/img/Questionnaire-Logo.png" style="display:block;width:70%;height:auto;margin-left:auto;margin-right:auto;"/>
             </h1>
-          
-      </ion-row>
-      
-      <ion-row>
+
+        </ion-row>
+
+        <ion-row>
             <ion-col>
                 <a id="login-back-button" class="nav-button" href="#" on-click="goBack()" float-left>
-                        <div>
-                            <label> &#8239; </label>  
-                            <ion-icon name="arrow-round-back"></ion-icon>  
-                            <label> &#8239; Back</label>       
-                        </div>
-                    
+                    <div>
+                        <label> &#8239; </label>  
+                        <ion-icon name="arrow-round-back"></ion-icon>  
+                        <label> &#8239; Back</label>       
+                    </div>
+
                 </a> 
             </ion-col>
-            
+
             <ion-col></ion-col>
-            
-            
-                      <ion-col>
-                          <!-- Home button, to homepage -->
-                          <a id="admin-home-home-button" class="nav-button" href="#" on-click="goToHomepage()" float-right>
-                              <div>
-                                  <label> &#8239; </label>  
-                                  <ion-icon name="home"></ion-icon>  
-                                  <label> &#8239; Home</label>       
-                              </div>
-                            
-                          </a> 
-                      </ion-col>
-                      
-       </ion-row>
 
-    <ion-row>
 
-      <ion-col>
-      
-        <h2 id="register0-heading21" class="white-text">
-          Which of the below statements are applicable to you? (Tick
-          all that apply). This helps us understand how much support you
-          might require with activities.
+            <ion-col>
+                <!-- Home button, to homepage -->
+                <a id="admin-home-home-button" class="nav-button" href="#" on-click="goToHomepage()" float-right>
+                    <div>
+                        <label> &#8239; </label>  
+                        <ion-icon name="home"></ion-icon>  
+                        <label> &#8239; Home</label>       
+                    </div>
 
-          </h2>
-        </ion-col>
+                </a> 
+            </ion-col>
 
-    </ion-row>
-    
-    <ion-row>
-        <ion-col>
-        <ion-list>
-            
-              <ion-item>
-                <ion-label>I often take the initiative and enjoy having responsibility</ion-label>
-                <ion-checkbox [(ngModel)]="answer1"></ion-checkbox>
-              </ion-item>
-            
-              <ion-item>
-                <ion-label>Some tasks may not be appropriate for me (e.g. delicate jobs, very hard labour)</ion-label>
-                <ion-checkbox [(ngModel)]="answer2" ></ion-checkbox>
-              </ion-item>
-            
-              <ion-item>
-                <ion-label>I am comfortable working independently with minimal instruction</ion-label>
-                <ion-checkbox [(ngModel)]="answer3"></ion-checkbox>
-              </ion-item>
+        </ion-row>
 
-              <ion-item>
-                  <ion-label>Once I build my confidence and knowledge, I am able to work independently with minimal instruction</ion-label>
-                  <ion-checkbox [(ngModel)]="answer4"></ion-checkbox>
-                </ion-item>
+        <ion-row>
 
-                <ion-item>
-                    <ion-label>I would always like to work with someone who can support me</ion-label>
-                    <ion-checkbox [(ngModel)]="answer5"></ion-checkbox>
-                  </ion-item>
+            <ion-col>
 
-  
-                    <ion-item>
-                        <ion-label>I need one-to-one support at all times</ion-label>
-                        <ion-checkbox [(ngModel)]="answer6"></ion-checkbox>
-                      </ion-item>
+                <h2 id="register0-heading21" class="white-text">
+                    {{question_text}}
+                </h2>
+            </ion-col>
 
-            
-            </ion-list>
-          </ion-col>
-    </ion-row>
-    <ion-row>
+        </ion-row>
+
+        <ion-row>
+            <ion-col>
+                <ion-list>
+
+                    <ion-item *ngFor="let choice of choices; let i = index">
+                        <ion-label>{{choice}}</ion-label>
+                        <ion-checkbox [(ngModel)]="responses[i]"></ion-checkbox>
+                    </ion-item>
+
+                </ion-list>
+            </ion-col>
+        </ion-row>
         
-      
+        <ion-row>
 
-      <ion-col></ion-col>
-      <ion-col></ion-col>
-      <ion-col>
+            <ion-col></ion-col>
+            <ion-col></ion-col>
+            <ion-col>
 
-          <a id="homepage-button1" class="semi-transparent-button" href="#" on-click = "goQuestionnaire4()">
-              <div>
-                  <label> </label>  
-                  <ion-icon name="arrow-round-forward"></ion-icon>  
-                  <label> Next</label>       
-              </div>
-          </a>
+                <a id="homepage-button1" class="semi-transparent-button" href="#" on-click = "goNext()">
+                    <div>
+                        <label> </label>  
+                        <ion-icon name="arrow-round-forward"></ion-icon>  
+                        <label> Next</label>       
+                    </div>
+                </a>
 
-    </ion-col>
-    <ion-col></ion-col>
-    <ion-col></ion-col>
-    
-  </ion-row>
+            </ion-col>
+            <ion-col></ion-col>
+            <ion-col></ion-col>
 
-  </ion-grid>
+        </ion-row>
+
+    </ion-grid>
 </ion-content>

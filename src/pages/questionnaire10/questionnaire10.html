@@ -41,10 +41,7 @@
 
       <ion-col>
       
-        <h2 id="register0-heading21" class="white-text">
-         Where did you hear about Sutton Community Farm?
-            
-          </h2>
+        <h2 id="register0-heading21" class="white-text">{{question_text}}</h2>
 
         </ion-col>
 
@@ -52,12 +49,12 @@
     
     <ion-row>
       <ion-col>
-      <form id="Register-form1">
-        <ion-item id="Register-input1">
-          <ion-label></ion-label>
-          <ion-input type="text" placeholder="Please start typing here" [(ngModel)]="informationInput" [ngModelOptions]="{standalone: true}" style="width:300px"></ion-input>
-        </ion-item>
-      </form>  
+      <form id="Questionnaire10">
+            <ion-item id="Questionnaire10-input">
+                <ion-label></ion-label>
+                <ion-input type="text" placeholder="Please specify here" [(ngModel)]="response_text" [ngModelOptions]="{standalone: true}" style="width:200px"></ion-input>
+            </ion-item>
+        </form>
     </ion-col>  
     </ion-row>
 
@@ -66,7 +63,7 @@
         <ion-col></ion-col>
         <ion-col>
   
-            <a id="homepage-button1" class="semi-transparent-button" href="#" on-click = "goQuestionnaire11()">
+            <a id="homepage-button1" class="semi-transparent-button" href="#" on-click = "goNext()">
                 <div>
                     <label> </label>  
                     <ion-icon name="arrow-round-forward"></ion-icon>  

@@ -6,75 +6,101 @@ import { sqlitedatabase } from '../../providers/sqlitedatabase/sqlitedatabase';
 import { QuestionnaireDatabaseProvider } from '../../providers/questionnaire-database/questionnaire-database';
 
 @Component({
-  selector: 'page-questionnaire1',
-  templateUrl: 'questionnaire1.html'
+    selector: 'page-questionnaire1',
+    templateUrl: 'questionnaire1.html'
 
 
 })
 export class Questionnaire1Page {
-  answer1 : boolean;
-  answer2 : boolean;
-  answer3  : boolean;
-  answer4  : boolean;
-  answer5 : boolean;
-  answer6  : boolean;
-  answer7 : boolean;
-  answer7Text='';
-  answers: any[];
   
+    choices: string[] = [
+        'Outdoors:  Growing and harvesting',
+        'Indoors: Portioning and packing vegetables',
+        'DIY annd improving infrastructure',
+        'Supporting others (social/therapeutic horticulture)',
+        'Supporting events and markets',
+        'Other',
+    ];
 
- 
+    responses:boolean[];
+    response_text = '';
 
-  constructor(public navCtrl: NavController,  private alertController: AlertController, private sqlitedatabase :sqlitedatabase, private questionnairedb: QuestionnaireDatabaseProvider ) {
-  }
+    question_id:number = 0;
+    question_text:string = '';
 
 
-  goToHomepage(){
-    this.navCtrl.push(HomepagePage);
-  }
-  goBack(){
-    this.navCtrl.pop();
-  }
-  
-  goQuestionnaire2(){
-  
-    if(this.answer1||this.answer2||this.answer3||this.answer4||this.answer5||this.answer6||this.answer7){
-      this.addData();
-    this.navCtrl.push(Questionnaire2Page);
+    constructor(public navCtrl: NavController,  
+        private alertController: AlertController, 
+        private sqlitedatabase :sqlitedatabase, 
+        private questionnairedb: QuestionnaireDatabaseProvider ) {
+        this.getQuestion();
+        this.responses = this.choices.map(function(x,i){ return false; })
+
     }
-    else{
-      let addTodoAlert=this.alertController.create({ 
-        message: "Please select at least one option"
-      });
-      addTodoAlert.present();
+
+    getQuestion(){
+        this.sqlitedatabase.getQuestion(1)
+            .then((data) => {
+                if (data == null) {
+                    console.log("no data in table");
+                    return;
+                }
+                if (data.rows.length > 0) {
+                    this.question_id = data.rows.item(0).id;
+                    this.question_text = data.rows.item(0).question_text;
+                    console.log('question:'+this.question_text);
+                }
+            }, err => {
+                console.log('Error: ', err);
+            }); 
     }
-  }
 
-  addData(): void{
-           var id= this.questionnairedb.getID();
-          let binaryAnswers=[];
-          this.answers = [this.answer1, this.answer2, this.answer3, this.answer4, this.answer5, this.answer6];
-          for(var i=0; i<this.answers.length; i++){
-            if(this.answers[i]){
-              binaryAnswers[i] = 1;
-            }
-            else{
-              binaryAnswers[i] = 0;
-            }
-          }
-          this.questionnairedb.db.executeSql('insert into Question1 (ID,Field1,Field2,Field3,Field4,Field5,Field6) values (?,?,?,?,?,?,?)', [id, binaryAnswers[0], binaryAnswers[1], binaryAnswers[2], binaryAnswers[3], binaryAnswers[4], binaryAnswers[5]]) 
-          .then(() => {
-            console.log("Binary values added");})
-            .catch(e => console.log(e));
-          if(this.answer7){
-          this.questionnairedb.db.executeSql('insert into Question1 (Other) values (?)',this.answer7Text ) 
-            .then(() => {
-              console.log("Registration data added");})
-              .catch(e => console.log(e));  
-            }
+    goNext(){
+        if(this.responses.indexOf(true) > -1){
+            let all_choices = this.choices;
+            let input_text = this.response_text;
+            console.log("responses:"+this.responses);
+            let selected = this.responses
+                            .map(function(x, i){
+                                if(x){
+                                    if (i < all_choices.length -1 )
+                                        return all_choices[i];
+                                    else
+                                        return input_text;
+                                }
+                            }).filter(function(x, i) { return x!= null;});
+            console.log("selected:"+selected);
+            this.sqlitedatabase.addToAnswerCache(this.question_id, selected);
+            this.sqlitedatabase.logAnswerCache();
 
-          
-  }
+            //this.sqlitedatabase.insertCachedAnswers(0);
+
+            this.navCtrl.push(Questionnaire2Page);
+        }
+        else{
+            let addTodoAlert=this.alertController.create({ 
+                message: "Please select at least one option"
+            });
+            addTodoAlert.present();
+        }
+    }
+
+    selectOnly(i:number){
+        console.log("selected number index:"+i);
+        this.responses = this.responses.map(function(x, index) { return i==index; });
+    }
+
+    goToHomepage(){
+        this.navCtrl.push(HomepagePage);
+    }
+
+    goBack(){
+        this.navCtrl.pop();
+    }
+
+
+    
+
 
 
 }

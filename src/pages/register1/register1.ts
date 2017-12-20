@@ -41,8 +41,6 @@ export class Register1Page {
             this.shareprovider.updateRegistrationInfo('first_name',this.firstNameInput);
             console.log(this.shareprovider.getRegistrationInfo());
 
-            this.shareprovider.addElements(this.firstNameInput); //this push function apends values. Does not delete what is already  there
-            console.log(this.shareprovider.getElements()); //testing the array
 
             this.navCtrl.push(Register2Page);
 

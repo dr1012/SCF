@@ -3,7 +3,7 @@ import { NavController, AlertController } from 'ionic-angular';
 import { HomepagePage } from '../homepage/homepage';
 import { ShareProvider } from '../../providers/share/share';
 import { sqlitedatabase } from '../../providers/sqlitedatabase/sqlitedatabase';
-import { Questionnaire0Page } from '../questionnaire0/questionnaire0';
+import { Register6Page } from '../register6/register6';
 
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
@@ -31,24 +31,9 @@ export class Register5Page {
         this.navCtrl.pop();
     }
 
-    private registerAccount(){
-        console.log(this.shareprovider.getRegistrationInfo());
-//        this.http.post(this.shareprovider.getBackendRootUrl() + '/register',
-//            this.shareprovider.getRegistrationInfo())
-//            .map(res => res.json())
-//            .subscribe(response => {
-//                console.log("response:");
-//                console.log(response);
-//                this.shareprovider.setUserId(response.user_id);
-//            });
-        this.dbProvider.registerUser(this.shareprovider.getRegistrationInfo())
-            .then(() => {
-                this.showAlert("Success", "Registration is successful")
-            }).catch(e => {
-                this.showAlert("Failure", "Something went wrong on registering user");
-                console.log(e)
-            });;
-    }
+   
+
+    
 
     public goRegister6(){
         if(this.addressInput && this.postcodeInput){
@@ -56,12 +41,8 @@ export class Register5Page {
             this.shareprovider.updateRegistrationInfo('postcode',this.postcodeInput);
             console.log(this.shareprovider.getRegistrationInfo());
             // register account
-            this.registerAccount();
-
-            this.shareprovider.addElements(this.addressInput); //this push function apends values. Does not delete what is already  there
-            this.shareprovider.addElements(this.postcodeInput)
-            console.log(this.shareprovider.getElements()); //testing the array
-            this.navCtrl.push(Questionnaire0Page);
+      
+            this.navCtrl.push(Register6Page);
         } else {
             let addTodoAlert=this.alertController.create({
                 title: "Warning!!", 
@@ -73,13 +54,7 @@ export class Register5Page {
 
     }
     
-    showAlert(title, message){
-        let alert=this.alertController.create({
-            title: title, 
-            message: message,
-        });
-        alert.present();
-    }
+  
 
 
 }

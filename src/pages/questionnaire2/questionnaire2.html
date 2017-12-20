@@ -1,123 +1,92 @@
 
 <ion-content padding class='bg-image'>
-        <ion-grid>
-            <ion-row>
-                
-                  <h1 id="login-heading2">
-                        <img src="assets/img/Questionnaire-Logo.png" style="display:block;width:70%;height:auto;margin-left:auto;margin-right:auto;"/>
-                  </h1>
-                
-            </ion-row>
-            
-            <ion-row>
-                  <ion-col>
-                      <a id="login-back-button" class="nav-button" href="#" on-click="goBack()" float-left>
-                              <div>
-                                  <label> &#8239; </label>  
-                                  <ion-icon name="arrow-round-back"></ion-icon>  
-                                  <label> &#8239; Back</label>       
-                              </div>
-                          
-                      </a> 
-                  </ion-col>
-                  
-                  <ion-col></ion-col>
-                  
-                  
-                            <ion-col>
-                                <!-- Home button, to homepage -->
-                                <a id="admin-home-home-button" class="nav-button" href="#" on-click="goToHomepage()" float-right>
-                                    <div>
-                                        <label> &#8239; </label>  
-                                        <ion-icon name="home"></ion-icon>  
-                                        <label> &#8239; Home</label>       
-                                    </div>
-                                  
-                                </a> 
-                            </ion-col>
-                            
-             </ion-row>
-          <ion-row>
-              
-              
-            <ion-col>
-          
-              <h2 id="register0-heading21" class="white-text">
-                    Why would you like to volunteer at Sutton Community Farm? (tick all that apply)
-                  
-                </h2>
-              </ion-col>
-              
-          </ion-row>
-      
-      <ion-row>
-          <ion-col>
-            <ion-list>
-                
-                  <ion-item>
-                    <ion-label>To learn new skills</ion-label>
-                    <ion-checkbox [(ngModel)]="answer1"></ion-checkbox>
-                  </ion-item>
-                
-                  <ion-item>
-                    <ion-label>To meet people</ion-label>
-                    <ion-checkbox [(ngModel)]="answer2" ></ion-checkbox>
-                  </ion-item>
-                
-                  <ion-item>
-                    <ion-label>For exercise</ion-label>
-                    <ion-checkbox [(ngModel)]="answer3"></ion-checkbox>
-                  </ion-item>
+    <ion-grid>
+        <ion-row>
 
-                  <ion-item>
-                      <ion-label>For enjoyment</ion-label>
-                      <ion-checkbox [(ngModel)]="answer4"></ion-checkbox>
+            <h1 id="login-heading2">
+                <img src="assets/img/Questionnaire-Logo.png" style="display:block;width:70%;height:auto;margin-left:auto;margin-right:auto;"/>
+            </h1>
+
+        </ion-row>
+
+        <ion-row>
+            <ion-col>
+                <a id="login-back-button" class="nav-button" href="#" on-click="goBack()" float-left>
+                    <div>
+                        <label> &#8239; </label>  
+                        <ion-icon name="arrow-round-back"></ion-icon>  
+                        <label> &#8239; Back</label>       
+                    </div>
+
+                </a> 
+            </ion-col>
+
+            <ion-col></ion-col>
+
+
+            <ion-col>
+                <!-- Home button, to homepage -->
+                <a id="admin-home-home-button" class="nav-button" href="#" on-click="goToHomepage()" float-right>
+                    <div>
+                        <label> &#8239; </label>  
+                        <ion-icon name="home"></ion-icon>  
+                        <label> &#8239; Home</label>       
+                    </div>
+
+                </a> 
+            </ion-col>
+
+        </ion-row>
+        <ion-row>
+
+
+            <ion-col>
+
+                <h2 id="register0-heading21" class="white-text">
+                    {{question_text}}
+                </h2>
+            </ion-col>
+
+        </ion-row>
+
+        <ion-row>
+            <ion-col>
+                <ion-list>
+
+                    <ion-item *ngFor="let choice of choices; let i = index">
+                        <ion-label>{{choice}}</ion-label>
+                        <ion-checkbox [(ngModel)]="responses[i]"></ion-checkbox>
                     </ion-item>
 
-                    <ion-item>
-                        <ion-label>To do something different</ion-label>
-                        <ion-checkbox [(ngModel)]="answer5"></ion-checkbox>
-                      </ion-item>
+                    <form id="Questionnaire1">
+                        <ion-item id="Questionnaire1-input7">
+                            <ion-label></ion-label>
+                            <ion-input type="text" placeholder="Please specify here" [(ngModel)]="response_text" [ngModelOptions]="{standalone: true}" style="width:200px"></ion-input>
+                        </ion-item>
+                    </form>
 
-      
-                        <ion-item>
-                            <ion-label>To improve my mental wellbeing</ion-label>
-                            <ion-checkbox [(ngModel)]="answer6"></ion-checkbox>
-                          </ion-item>
+                </ion-list>
+            </ion-col>
+        </ion-row>
 
-                          <ion-item>
-                              <ion-label>Other</ion-label>
-                              <ion-checkbox [(ngModel)]="answer7"></ion-checkbox>
-                            </ion-item>
-                            <form id="Questionnaire1">
-                              <ion-item id="Questionnaire1-input7">
-                                <ion-label></ion-label>
-                                <ion-input type="text" placeholder="Please specify here" [(ngModel)]="answer7Text" [ngModelOptions]="{standalone: true}" style="width:200px"></ion-input>
-                              </ion-item>
-                            </form>
-                
-              </ion-list>
-          </ion-col>
-      </ion-row>
+        <ion-row>
 
-      <ion-row>
-      
-        <ion-col></ion-col>
-        <ion-col></ion-col>
-        <ion-col>
-  
-            <a id="homepage-button1" class="semi-transparent-button" href="#" on-click = "goQuestionnaire3()">
-                <div>
-                    <label> </label>  
-                    <ion-icon name="arrow-round-forward"></ion-icon>  
-                    <label> Next</label>       
-                </div>
-            </a>
-  
-      </ion-col>
-      <ion-col></ion-col>
-      <ion-col></ion-col>
+            <ion-col></ion-col>
+            <ion-col></ion-col>
+            <ion-col>
 
-      </ion-row>
+                <a id="homepage-button1" class="semi-transparent-button" href="#" on-click = "goNext()">
+                    <div>
+                        <label> </label>  
+                        <ion-icon name="arrow-round-forward"></ion-icon>  
+                        <label> Next</label>       
+                    </div>
+                </a>
+
+            </ion-col>
+            <ion-col></ion-col>
+            <ion-col></ion-col>
+
+        </ion-row>
     </ion-grid>
-  </ion-content>
+</ion-content>

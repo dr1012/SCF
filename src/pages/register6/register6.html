@@ -1,0 +1,147 @@
+<ion-content padding class="bg-image">
+    <ion-grid>
+        <ion-row>
+            
+              <h1 id="login-heading2">
+                    <img src="assets/img/Register-Logo.png" style="display:block;width:50%;height:auto;margin-left:auto;margin-right:auto;"/>
+              </h1>
+            
+        </ion-row>
+        
+        <ion-row>
+              <ion-col>
+                  <a id="login-back-button" class="nav-button" href="#" on-click="goBack()" float-left>
+                          <div>
+                              <label> &#8239; </label>  
+                              <ion-icon name="arrow-round-back"></ion-icon>  
+                              <label> &#8239; Back</label>       
+                          </div>
+                      
+                  </a> 
+              </ion-col>
+              
+              <ion-col></ion-col>
+              
+              
+                        <ion-col>
+                            <!-- Home button, to homepage -->
+                            <a id="admin-home-home-button" class="nav-button" href="#" on-click="goToHomepage()" float-right>
+                                <div>
+                                    <label> &#8239; </label>  
+                                    <ion-icon name="home"></ion-icon>  
+                                    <label> &#8239; Home</label>       
+                                </div>
+                              
+                            </a> 
+                        </ion-col>
+                        
+         </ion-row>
+  
+      <ion-row>
+        <br>
+        <br>
+       <ion-col>
+          <h2 id="login-heading1" class="white-text">
+              Who should we contact in the event of an emergency?
+            </h2>
+       </ion-col>
+        
+        <br>
+        <br>
+        <br>
+        <br>
+        
+      </ion-row>
+  
+  
+  
+      <ion-row>
+        <ion-col>
+          <h3 id="login-heading4" class="white-text">
+            Name:
+          </h3>
+        </ion-col>
+  
+        <ion-col>
+  
+          <form id="login-form2">
+            <ion-item id="login-input2">
+              <ion-label></ion-label>
+              <ion-input type="text"  placeholder="" [(ngModel)]="emergency_name" [ngModelOptions]="{standalone: true}" style="width:200px"></ion-input>
+            </ion-item>
+          </form>
+          <br>
+          <br>
+          <br>
+          <br>
+        </ion-col>
+        <ion-col>
+  
+  
+        </ion-col>
+      </ion-row>
+      
+      <ion-row>
+        <ion-col>
+          <h3 id="login-heading4" class="white-text">
+            Telephone:
+          </h3>
+        </ion-col>
+        <ion-col>
+          <form id="login-form2">
+            <ion-item id="login-input2">
+              <ion-label></ion-label>
+              <ion-input type="tel"  placeholder="" [(ngModel)]="emergency_telephone" [ngModelOptions]="{standalone: true}" style="width:200px"></ion-input>
+            </ion-item>
+          </form>
+          
+        </ion-col>
+        <ion-col>
+  
+         
+  
+        </ion-col>
+      </ion-row>
+   
+    
+    <ion-row>
+      <ion-col>
+        <h3 id="login-heading4" class="white-text">
+          Relationship to you:
+        </h3>
+      </ion-col>
+      <ion-col>
+        <form id="login-form2">
+          <ion-item id="login-input2">
+            <ion-label></ion-label>
+            <ion-input type="text"  placeholder="" [(ngModel)]="emergency_relationship" [ngModelOptions]="{standalone: true}" style="width:200px"></ion-input>
+          </ion-item>
+        </form>
+        
+      </ion-col>
+      <ion-col>
+
+       
+
+      </ion-col>
+    </ion-row>
+      <ion-row>
+          <ion-col></ion-col>
+          <ion-col></ion-col>
+          <ion-col>
+    
+              <a id="homepage-button1" class="semi-transparent-button" href="#" on-click = "goRegister7()">
+                  <div>
+                      <label> </label>  
+                      <ion-icon name="arrow-round-forward"></ion-icon>  
+                      <label> Next</label>       
+                  </div>
+              </a>
+    
+        </ion-col>
+        <ion-col></ion-col>
+        <ion-col></ion-col>
+      </ion-row>
+    </ion-grid>
+  
+  </ion-content>

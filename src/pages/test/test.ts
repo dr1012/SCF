@@ -33,7 +33,7 @@ export class TestPage {
   headerRow : any[] =[];
   Header: String[] = ["ID", "First Name", "Last Name", "Email", "Phone", "Address", "Postcode"];
   constructor(public httpclient: HttpClient, public sqlite: SQLite, private sqlitedatabase: sqlitedatabase, private shareprovider: ShareProvider, private http: Http, private logindatabase:LoginDatabaseProvider) {
-    this.getallData();
+   
   }
   
 
@@ -104,7 +104,7 @@ getallData(){
 }
 
 
-  downloadCSV(){
+  /*downloadCSV(){
 
   
 
@@ -125,7 +125,7 @@ getallData(){
   a.click();
 document.body.removeChild(a);
 
-  }
+  }*/
 
   trackByFn(index: any, item: any){
     return index

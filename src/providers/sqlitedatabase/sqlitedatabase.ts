@@ -10,7 +10,10 @@ const DATABASE_FILENAME: string = 'data.db';
 export class sqlitedatabase {
     // The database is a variable of type SQLiteObject,
     // not a table, the file that contains the table
-     db: SQLiteObject = null; //storage the SQLiteObject return by create method
+    private db: SQLiteObject = null; //storage the SQLiteObject return by create method
+
+    private answerCache = {};
+    private diversityCache={};
 
     constructor(
       private http: HttpClient,
@@ -62,7 +65,10 @@ export class sqlitedatabase {
                         email_address varchar(32) DEFAULT NULL,\
                         address varchar(48) DEFAULT NULL,\
                         postcode varchar(16) DEFAULT NULL,\
-                        phone_number varchar(16) DEFAULT NULL\
+                        phone_number varchar(16) DEFAULT NULL,\
+                        emergency_name varchar(48) DEFAULT NULL,\
+                        emergency_telephone varchar(16) DEFAULT NULL,\
+                        emergency_relationship varchar(48) DEFAULT NULL\
                     )";
         
         this.db
@@ -84,32 +90,107 @@ export class sqlitedatabase {
                           console.log("Created table[login_history]");
                       }).catch(e => console.log(e));   
                               
-                  this.db.executeSql('CREATE TABLE IF NOT EXISTS Volunteers ( ID INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, FirstName TEXT NOT NULL, LastName TEXT NOT NULL, Email TEXT NOT NULL, PhoneNumber TEXT NOT NULL, Address TEXT NOT NULL, Postcode TEXT NOT NULL )', {}) //Executes an SQL command
-                      .then(() => {
-                          console.log("first table crated");
-                          this.db.executeSql('CREATE TABLE IF NOT EXISTS Questionnaire_Answers ( Question1 TEXT, Question2 TEXT, Question3 TEXT, Question4 TEXT, Question5 TEXT, Question6 TEXT, Question7 TEXT, Question8 TEXT, Question9 TEXT, Question10 TEXT, Question11 TEXT, Question12 TEXT, Question13 TEXT, Question14 TEXT, Question15 TEXT )', {})
-                              .then(() => console.log('second table created'))
-                              .catch(e => console.log(e));
-                      })
-                      .catch(e => console.log(e));
-        
-    }
+                
+                      
+        // Questions
+        var sql_question_table = "CREATE TABLE IF NOT EXISTS question (\
+                                      id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,\
+                                      question_text TEXT NOT NULL,\
+                                      position INTEGER NOT NULL,\
+                                      enabled TINYINT NOT NULL\
+                                    )"; 
+        var sql_question_option_table = "CREATE TABLE IF NOT EXISTS question_option (\
+                                      id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,\
+                                      question_id INTEGER NOT NULL,\
+                                      option_text TEXT NOT NULL,\
+                                      position INTEGER NOT NULL,\
+                                      enabled INTEGER NOT NULL\
+                                    )";        
+        var sql_question_response_table = "CREATE TABLE IF NOT EXISTS question_response (\
+                                      id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,\
+                                      question_id INTEGER NOT NULL,\
+                                      option_id INTEGER NULL,\
+                                      option_text TEXT NULL,\
+                                      user_id INTEGER NOT NULL,\
+                                      recorded_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP\
+                                    )";     
+
+         var sql_diversity_table = "CREATE TABLE IF NOT EXISTS diversity (\
+                                      id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,\
+                                      question_text TEXT NOT NULL,\
+                                      position INTEGER NOT NULL,\
+                                      enabled TINYINT NOT NULL\
+                                    )";         
+                                    
+                                    
+        var sql_diversity_response_table = "CREATE TABLE IF NOT EXISTS diversity_response (\
+                                      id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,\
+                                      question_id INTEGER NOT NULL,\
+                                      option_text TEXT NOT NULL,\
+                                      recorded_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP\
+                                    )";                             
+                                    
+        this.db
+            .executeSql(sql_question_table, {})
+            .then(() => {
+                console.log("Created table[question_table]");
+                this.insertQuestions();
+            }).catch(e => console.log(e));  
+        this.db
+            .executeSql(sql_question_option_table, {})
+            .then(() => {
+                console.log("Created table[question_option_table]");
+            }).catch(e => console.log(e));  
+        this.db
+            .executeSql(sql_question_response_table, {})
+            .then(() => {
+                console.log("Created table[question_response_table]");
+            }).catch(e => console.log(e));  
+
+            this.db
+            .executeSql(sql_diversity_table, {})
+            .then(() => {
+                console.log("Created table[diversity_table]");
+                this.insertDiversityQuestions();
+            }).catch(e => console.log(e));  
+
+        this.db
+            .executeSql(sql_diversity_response_table, {})
+            .then(() => {
+                console.log("Created table[diversity_response_table]");
+            }).catch(e => console.log(e)); 
+
+        }
+
+
+  
+
+
+
+
+
 
     // Register user to database
-    registerUser(data): Promise<void> {
+    registerUser(data): Promise<any> {
         var sql =   "insert into sutton_user(\
                         first_name, last_name, \
                         email_address, \
                         phone_number, \
-                        address, postcode \
-                    ) values (?,?,?,?,?,?)";
+                        address, postcode, \
+                        emergency_name,\
+                        emergency_telephone,\
+                        emergency_relationship\
+                    ) values (?,?,?,?,?,?,?,?,?); SELECT last_insert_rowid()";
         var values = [
                         data["first_name"], 
                         data["last_name"], 
                         data["email_address"], 
                         data["phone_number"], 
                         data["address"], 
-                        data["postcode"]
+                        data["postcode"],
+                        data["emergency_name"],
+                        data["emergency_telephone"],
+                        data["emergency_relationship"]
                      ];
                               
         return this.db.executeSql(sql,values);
@@ -146,41 +227,45 @@ export class sqlitedatabase {
         return this.db.executeSql(sql, parameters);
     }
     
-    /* Old Codes below; Not used anymore */
-    
+
+
+
+
+
+    insertDiversityQuestions() {
+        
+                
+                let question1 = "Age category";
+                let question2 = "Sex";
+                let question3 = "Sexual orientation. Are you...";
+                let question4 = "Ethnicity. Are you...";
+                let question5 = "Disability: are your day-to-day activities limited because of\
+                a health problem or disability which has lasted,\
+                or is expected to last, at least 12 months?";
+                let question6 = "Caring responsibilities: do you regularly provide unpaid\
+             support caring for someone? [A carer is someone who spends a\
+                significant proportion of their time providing unpaid support\
+                to a family member, partner or friend who is ill, frail,\
+                disabled or has mental health or substance misuse problems]";
+                let question7 = "Religion or belief: are you or do you have...";
+                let question8 = "Current employment status"
+                let question9 = "Which London borough do you live in?"
+                let sql = "INSERT INTO diversity ( id, question_text, position, enabled ) \
+                            VALUES (?, ?, ?, 1)";
+        
+                this.db.executeSql(sql, [1, question1, 1]);
+                this.db.executeSql(sql, [2, question2, 2]);
+                this.db.executeSql(sql, [3, question3, 3]);
+                this.db.executeSql(sql, [4, question4, 4]);
+                this.db.executeSql(sql, [5, question5, 5]);
+                this.db.executeSql(sql, [6, question6, 6]);
+                this.db.executeSql(sql, [7, question7, 7]);
+                this.db.executeSql(sql, [8, question8, 8]);
+                this.db.executeSql(sql, [9, question9, 9]);
+               
+            }
 
     
-    returnFinal() {
-         this.db.executeSql('select * from sutton_user', [])
-            .then((data) => {
-                if (data == null) {
-                    console.log("no data in table");
-                    return [];
-                }
-                let returnArray = [];
-                if (data.rows.length > 0) {
-                    for (var i = 0; i < data.rows.length; i++) {
-                        returnArray.push({
-                            Id: data.rows.item(i).id,
-                            FirstName: data.rows.item(i).first_name,
-                            LastName: data.rows.item(i).last_name,
-                            Email: data.rows.item(i).email_address, 
-                            PhoneNumber: data.rows.item(i).phone_number, 
-                            Address: data.rows.item(i).address, 
-                            Postcode: data.rows.item(i).postcode,
-                        });
-                    }
-
-                }
-
-
-
-
-            }, err => {
-                console.log('Error: ', err);
-                return [];
-            });
-    }
 
    
     ReturnID(firstName: String, lastName: String){
@@ -216,10 +301,291 @@ export class sqlitedatabase {
     }
 
 
+    /* Questionnaires */
+
+    insertQuestions() {
+
+        
+        let question1 = "Please tick the volunteering activities you are interested in.*\
+        Tick all that apply.";
+        let question2 = "Please tell us why you would like to volunteer at Sutton Community Farm.*\
+         Tick all that apply.";
+        let question3 = "Please tick the statements applicable to you.* This helps us \
+        understand how much support you might require with activities.";
+    	let question4 = "Please add any further information about the support you\
+          require. Include whether you are coming with a support\
+          worker.";
+          let question5 = "Do you have any medical conditions, allergies, disabilities\
+          or existing injuries that may affect participation? Our staff\
+          will discuss this with you in a sensitive and\
+          confidential manner.*";
+    	let question6 = "Do you have a particular interest in supporting other\
+          volunteers at the farm as a Buddy Volunteer?\
+          This would require additional training";
+
+    	let question7 = "To help keep in touch with the farm community, would you like\
+          to be added to our Google Group? You can leave anytime.";
+    	let question8 = "Where did you hear about Sutton Community Farm?*";
+        let question9 = "Please tick which days you are able to volunteer.*";
+    	
+
+    	let sql = "INSERT INTO question ( id, question_text, position, enabled ) \
+    				VALUES (?, ?, ?, 1)";
+
+        this.db.executeSql(sql, [1, question1, 1]);
+        this.db.executeSql(sql, [2, question2, 2]);
+        this.db.executeSql(sql, [3, question3, 3]);
+        this.db.executeSql(sql, [4, question4, 4]);
+        this.db.executeSql(sql, [5, question5, 5]);
+        this.db.executeSql(sql, [6, question6, 6]);
+        this.db.executeSql(sql, [7, question7, 7]);
+        this.db.executeSql(sql, [8, question8, 8]);
+        this.db.executeSql(sql, [9, question9, 9]);
+       
+    }
+
+    getQuestion(position:number): Promise<any> {
+    	let sql = "select * from question where position = ? order by id desc limit 1";
+    	let params = [position];
+    	return this.db.executeSql(sql, params);
+    }
+
+
+    getDiversityQuestion(position:number): Promise<any> {
+    	let sql = "select * from diversity where position = ? order by id desc limit 1";
+    	let params = [position];
+    	return this.db.executeSql(sql, params);
+    }
+
+    insertCachedAnswers(user_id: number){
+      console.log("Inserting cached answers for user:" + user_id);           
+    	let insert_sql = "INSERT INTO question_response (\
+    						user_id, question_id, option_text )\
+							VALUES (?, ?, ?)";
+    	for(let question_key in this.answerCache){
+        console.log("question_key:"+question_key);
+    		let answers = this.answerCache[question_key];
+    		console.log(answers);
+    		for (let index in answers){
+          let answer = answers[index];
+          console.log("answer:"+answer);
+    			let params = [user_id, question_key, answer];
+    			this.db.executeSql(insert_sql, params).then(()=>{ 
+            console.log("inserted question response:"+question_key+":"+answer);
+          });
+    		}
+    	}
+    }
 
 
 
 
+    insertDiversityCache(){
+        console.log("Inserting cached diversity answers");           
+          let insert_sql = "INSERT INTO diversity_response (\
+                              question_id, option_text )\
+                              VALUES (?, ?)";
+          for(let question_key in this.diversityCache){
+          console.log("question_key:"+question_key);
+              let answers = this.diversityCache[question_key];
+              console.log(answers);
+              for (let index in answers){
+            let answer = answers[index];
+            console.log("answer:"+answer);
+                  let params = [question_key, answer];
+                  this.db.executeSql(insert_sql, params).then(()=>{ 
+              console.log("inserted question response:"+question_key+":"+answer);
+            });
+              }
+          }
+      }
+
+
+
+
+    getAnswers(user_id: number, question_id: number){
+    	let sql = "select * from question_response where user_id = ? and question_id = ?";
+    	this.db.executeSql(sql, [user_id, question_id])
+    			.then((data)=>{console.log(JSON.stringify(data))});
+    }
+
+    // List answers with count statistics for a given question
+    listAnswerStats(question_id: number): Promise<any>{
+      let sql = "select user_id, recorded_at, question_id, option_text, count(*) as count\
+                 from question_response \
+                 where question_id=? \
+                 group by question_id, option_text";
+      let stats = [];
+      return this.db.executeSql(sql, [question_id])
+          .then(
+            (data)=>{ 
+              //console.log(JSON.stringify(data));
+              if(data.rows.length>0){
+                for (var i = 0; i < data.rows.length; i++) {
+                    stats.push({
+                        user_id: data.rows.item(i).user_id,
+                        recorded_at: data.rows.item(i).recorded_at,
+                        question_id: data.rows.item(i).question_id,
+                        response: data.rows.item(i).option_text,
+                        count: data.rows.item(i).count
+                    });
+                }
+              }
+              //console.log(JSON.stringify(stats));
+              //console.log("------------------");
+              return stats;
+            }, 
+            err => {
+                console.log('Error: ', err);
+                return [];
+            });
+    }
+
+    // List all answers with count statistics for all questions
+    listAllStats(): Promise<any>{
+      let sql = "select user_id, recorded_at, question_id, option_text, count(*) as count  \
+                from question_response \
+                group by question_id, option_text";
+      let stats = [];
+      return this.db.executeSql(sql, [])
+          .then(
+            (data)=>{ 
+              //console.log(JSON.stringify(data));
+              if(data.rows.length>0){
+                for (var i = 0; i < data.rows.length; i++) {
+                    stats.push({
+                        user_id: data.rows.item(i).user_id,
+                        recorded_at: data.rows.item(i).recorded_at,
+                        question_id: data.rows.item(i).question_id,
+                        response: data.rows.item(i).option_text,
+                        count: data.rows.item(i).count
+                    });
+                }
+              }
+              //console.log(JSON.stringify(stats));
+              return stats;
+            }, 
+            err => {
+                console.log('Error: ', err);
+                return [];
+            });
+    }
+
+
+    // Add to answer cache
+    addToAnswerCache(question_id: number, answerList){
+    	this.answerCache[question_id] = answerList;
+    }
+
+    // Clear answer cache
+    clearAnswerCache(question_id: number){
+    	delete this.answerCache[question_id];
+    }
+
+    // log answer cache
+    logAnswerCache(){
+    	console.log(JSON.stringify(this.answerCache));
+    }
+
+    addToDiversityCache(question_id: number, answerList){
+        this.diversityCache[question_id] = answerList;
+    }
+
+    logDiversityCache(){
+    	console.log(JSON.stringify(this.diversityCache));
+    }
+
+// list registration data for a give person
+    listRegistration(firstname: string, lastname: string): Promise<any>{
+        let sql = "select * from sutton_user where first_name=? and last_name=?";
+        let stats = [];
+        return this.db.executeSql(sql, [firstname, lastname])
+            .then(
+              (data)=>{ 
+                //console.log(JSON.stringify(data));
+                if(data.rows.length>0){
+                  for (var i = 0; i < data.rows.length; i++) {
+                      stats.push({
+                          user_id: data.rows.item(i).id,
+                          first_name: data.rows.item(i).first_name,
+                          last_name: data.rows.item(i).last_name,
+                          email_address: data.rows.item(i).email_address,
+                          phone_number: data.rows.item(i).phone_number,
+                         address: data.rows.item(i).address,
+                          postcode: data.rows.item(i).postcode,
+                          emergency_name: data.rows.item(i).emergency_name,
+                          emergency_telephone: data.rows.item(i).emergency_telephone,
+                          emergency_relationship: data.rows.item(i).emergency_reltationship
+
+                      });
+                  }
+                }
+                //console.log(JSON.stringify(stats));
+                //console.log("------------------");
+                return stats;
+              }, 
+              err => {
+                  console.log('Error: ', err);
+                  return [];
+              });
+      }
+
+      listAllDiversity(): Promise<any>{
+        let sql = "select recorded_at, question_id, option_text, count(*) as count  \
+        from diversity_response \
+        group by question_id, option_text";
+        let stats = [];
+        return this.db.executeSql(sql, [])
+            .then(
+              (data)=>{ 
+                //console.log(JSON.stringify(data));
+                if(data.rows.length>0){
+                  for (var i = 0; i < data.rows.length; i++) {
+                      stats.push({
+                        recorded_at: data.rows.item(i).recorded_at,
+                        question_id: data.rows.item(i).question_id,
+                        response: data.rows.item(i).option_text,
+                        count: data.rows.item(i).count
+                      });
+                  }
+                }
+                //console.log(JSON.stringify(stats));
+                return stats;
+              }, 
+              err => {
+                  console.log('Error: ', err);
+                  return [];
+              });
+      }
+
+      listAllLog(): Promise<any>{
+        let sql = "select user_id, login_ts, logout_ts\
+        from login_history\
+        group by user_id";
+        let stats = [];
+        return this.db.executeSql(sql, [])
+            .then(
+              (data)=>{ 
+                //console.log(JSON.stringify(data));
+                if(data.rows.length>0){
+                  for (var i = 0; i < data.rows.length; i++) {
+                      stats.push({
+                        user_id: data.rows.item(i).user_id,
+                        login_time: data.rows.item(i).login_ts,
+                        logout_time: data.rows.item(i).logout_ts
+                      });
+                  }
+                }
+                //console.log(JSON.stringify(stats));
+                return stats;
+              }, 
+              err => {
+                  console.log('Error: ', err);
+                  return [];
+              });
+      }
+
+      
 
 
 }

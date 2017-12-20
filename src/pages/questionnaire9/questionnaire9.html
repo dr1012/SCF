@@ -1,91 +1,83 @@
 <ion-content padding class="bg-image">
     <ion-grid>
         <ion-row>
-            
-              <h1 id="login-heading2">
-                    <img src="assets/img/Questionnaire-Logo.png" style="display:block;width:70%;height:auto;margin-left:auto;margin-right:auto;"/>
-              </h1>
-            
+
+            <h1 id="login-heading2">
+                <img src="assets/img/Questionnaire-Logo.png" style="display:block;width:70%;height:auto;margin-left:auto;margin-right:auto;"/>
+            </h1>
+
         </ion-row>
-        
+
         <ion-row>
-              <ion-col>
-                  <a id="login-back-button" class="nav-button" href="#" on-click="goBack()" float-left>
-                          <div>
-                              <label> &#8239; </label>  
-                              <ion-icon name="arrow-round-back"></ion-icon>  
-                              <label> &#8239; Back</label>       
-                          </div>
-                      
-                  </a> 
-              </ion-col>
-              
-              <ion-col></ion-col>
-              
-              
-                        <ion-col>
-                            <!-- Home button, to homepage -->
-                            <a id="admin-home-home-button" class="nav-button" href="#" on-click="goToHomepage()" float-right>
-                                <div>
-                                    <label> &#8239; </label>  
-                                    <ion-icon name="home"></ion-icon>  
-                                    <label> &#8239; Home</label>       
-                                </div>
-                              
-                            </a> 
-                        </ion-col>
-                        
-         </ion-row>
+            <ion-col>
+                <a id="login-back-button" class="nav-button" href="#" on-click="goBack()" float-left>
+                    <div>
+                        <label> &#8239; </label>  
+                        <ion-icon name="arrow-round-back"></ion-icon>  
+                        <label> &#8239; Back</label>       
+                    </div>
 
-    <ion-row>
-        
-      <ion-col>
-    
-        <h2 id="register0-heading21" class="white-text">
-          To help keep in touch with the farm community, would you like
-          to be added to our Google Group? This is an online place to
-          discuss the farm and communicate. You can leave anytime.
+                </a> 
+            </ion-col>
 
-          </h2>
+            <ion-col></ion-col>
+
+
+            <ion-col>
+                <!-- Home button, to homepage -->
+                <a id="admin-home-home-button" class="nav-button" href="#" on-click="goToHomepage()" float-right>
+                    <div>
+                      <label> &#8239; </label>  
+                      <ion-icon name="home"></ion-icon>  
+                      <label> &#8239; Home</label>       
+                  </div>
+
+              </a> 
+          </ion-col>
+
+      </ion-row>
+
+      <ion-row>
+
+        <ion-col>
+
+            <h2 id="register0-heading21" class="white-text">
+                {{question_text}}
+            </h2>
         </ion-col>
 
     </ion-row>
-    
+
     <ion-row>
         <ion-col>
-        <ion-list>
-            
-              <ion-item>
-                <ion-label>Yes</ion-label>
-                <ion-checkbox [(ngModel)]="answer1"></ion-checkbox>
-              </ion-item>
-            
-              <ion-item>
-                <ion-label>No</ion-label>
-                <ion-checkbox [(ngModel)]="answer2" ></ion-checkbox>
-              </ion-item>
+            <ion-list>
+
+                <ion-item *ngFor="let choice of choices; let i = index">
+                    <ion-label>{{choice}}</ion-label>
+                    <ion-checkbox [(ngModel)]="responses[i]" (click)="selectOnly(i)"></ion-checkbox>
+                </ion-item>
 
             </ion-list>
-            </ion-col>
+        </ion-col>
     </ion-row>
     <ion-row>
         <ion-col></ion-col>
         <ion-col></ion-col>
         <ion-col>
-  
-            <a id="homepage-button1" class="semi-transparent-button" href="#" on-click = "goQuestionnaire10()">
+
+            <a id="homepage-button1" class="semi-transparent-button" href="#" on-click = "goNext()">
                 <div>
                     <label> </label>  
                     <ion-icon name="arrow-round-forward"></ion-icon>  
                     <label> Next</label>       
                 </div>
             </a>
-  
-      </ion-col>
-      <ion-col></ion-col>
-      <ion-col></ion-col>
 
-      </ion-row>
+        </ion-col>
+        <ion-col></ion-col>
+        <ion-col></ion-col>
 
-  </ion-grid>
+    </ion-row>
+
+</ion-grid>
 </ion-content>

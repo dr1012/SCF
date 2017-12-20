@@ -14,6 +14,7 @@ export class ShareProvider {
     private new_questionnaire = [];
     private registration_info = {};
     private user_id = 0;
+    private diversity = {};
 
     // This variable indicates where the php files can be served from
     private backend_root_url = "http://localhost/SCF/index.php/api/";
@@ -88,6 +89,10 @@ export class ShareProvider {
 
     QuestionnaireGetElement(i) {
         return this.new_questionnaire[i];
+    }
+
+    updateDiversityInfo(key, value) {
+        this.registration_info[key] = value;
     }
 
 }

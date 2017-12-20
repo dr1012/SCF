@@ -1,0 +1,124 @@
+
+<ion-content padding class='bg-image'>
+  <ion-grid>
+      <ion-row>
+          
+            <h1 id="login-heading2">
+                    <img src="assets/img/Volunteer-Agreement-Logo.png" style="display:block;width:55%;height:auto;margin-left:auto;margin-right:auto;"/>
+              </h1>
+          
+      </ion-row>
+      
+      <ion-row>
+            <ion-col>
+                <a id="login-back-button" class="nav-button" href="#" on-click="goBack()" float-left>
+                        <div>
+                            <label> &#8239; </label>  
+                            <ion-icon name="arrow-round-back"></ion-icon>  
+                            <label> &#8239; Back</label>       
+                        </div>
+                    
+                </a> 
+            </ion-col>
+            
+            <ion-col></ion-col>
+            
+            
+                      <ion-col>
+                          <!-- Home button, to homepage -->
+                          <a id="admin-home-home-button" class="nav-button" href="#" on-click="goToHomepage()" float-right>
+                              <div>
+                                  <label> &#8239; </label>  
+                                  <ion-icon name="home"></ion-icon>  
+                                  <label> &#8239; Home</label>       
+                              </div>
+                            
+                          </a> 
+                      </ion-col>
+                      
+       </ion-row>
+    <ion-row>
+        
+        
+      <ion-col>
+    
+        <h2 id="register0-heading21" class="white-text">
+                Sutton Community Farm provides a practical, hands­on volunteering
+                experience. The experience can be active and physically demanding.
+                Our Farm maintains a strong health and safety culture and aims to
+                reduce risks to a minimum through risk assessments for our
+                activities, careful planning and staff training.
+                
+                As with any outdoor activity, there are residual risks and these are
+                managed by staff at Sutton Community Farm on an ongoing basis. This
+                statement is designed to ensure that participants understand the
+                nature of the activities and associated risks.
+                Please read the Code of Responsible Behaviour for more information
+                about the activities and how to be safe. We also have a Health and
+                Safety Policy and Risk Assessment available.
+                This is available on our website:
+                http://suttoncommunityfarmorg.uk/visit/volunteering/
+                Sutton Community Farm reserves the right to refuse the offer of
+                services of any volunteer at any time, or to terminate any work
+                being done by a volunteer and require the volunteer to vacate the
+                project.
+            
+          </h2>
+        </ion-col>
+        
+    </ion-row>
+    
+    <ion-row>
+
+            <h2 id="register0-heading21" class="white-text">
+                    Name:
+                
+              </h2>
+
+            <form id="Register-form1">
+                    <ion-item id="Register-input1">
+                      <ion-label></ion-label>
+                      <ion-input type="text" placeholder="" [(ngModel)]="firstNameInput" [ngModelOptions]="{standalone: true}" style="width:200px"></ion-input>
+                    </ion-item>
+                  </form>
+
+
+                  <h2 id="register0-heading21" class="white-text">
+                        I confirm that I have read the statements above, and also read
+                        the Code of Responsible Behaviour. I understand the nature of
+                        the activities to be undertaken and consider that I am fit to
+                        take part. I do not have any medical conditions not already
+                        disclosed.
+                    
+                  </h2>
+
+                  <h2 id="register0-heading21" class="white-text">
+                        I will comply with all reasonable instructions given by staff
+                        at Sutton Community Farm.
+                    
+                  </h2>
+
+        
+    </ion-row>
+    <ion-row>
+        
+
+        <ion-col></ion-col>
+        <ion-col></ion-col>
+        <ion-col>
+  
+            <a id="homepage-button1" class="semi-transparent-button" href="#" on-click = "goToDiversityQuestionnaire5()">
+                <div>
+                    <label> </label>  
+                    <ion-icon name="arrow-round-forward"></ion-icon>  
+                    <label> Next</label>       
+                </div>
+            </a>
+  
+      </ion-col>
+      <ion-col></ion-col>
+      <ion-col></ion-col>
+      </ion-row>
+
+  </ion-grid>
+</ion-content>
