@@ -411,10 +411,10 @@ export class sqlitedatabase {
 
     // List answers with count statistics for a given question
     listAnswerStats(question_id: number): Promise<any>{
-      let sql = "select user_id, recorded_at, question_id, option_text, count(*) as count\
-                 from question_response \
+      let sql = "select id, user_id, recorded_at, question_id, option_text  \
+                 from question_response\
                  where question_id=? \
-                 group by question_id, option_text";
+                 order by question_id";
       let stats = [];
       return this.db.executeSql(sql, [question_id])
           .then(
@@ -423,11 +423,11 @@ export class sqlitedatabase {
               if(data.rows.length>0){
                 for (var i = 0; i < data.rows.length; i++) {
                     stats.push({
+                        id: data.rows.item(i).id,
                         user_id: data.rows.item(i).user_id,
                         recorded_at: data.rows.item(i).recorded_at,
                         question_id: data.rows.item(i).question_id,
                         response: data.rows.item(i).option_text,
-                        count: data.rows.item(i).count
                     });
                 }
               }
@@ -496,10 +496,10 @@ export class sqlitedatabase {
     }
 
 // list registration data for a give person
-    listRegistration(firstname: string, lastname: string): Promise<any>{
-        let sql = "select * from sutton_user where first_name=? and last_name=?";
+    listRegistration(user_id : number): Promise<any>{
+        let sql = "select * from sutton_user where user_id = ?";
         let stats = [];
-        return this.db.executeSql(sql, [firstname, lastname])
+        return this.db.executeSql(sql, [user_id])
             .then(
               (data)=>{ 
                 //console.log(JSON.stringify(data));
@@ -559,7 +559,7 @@ export class sqlitedatabase {
       }
 
       listAllLog(): Promise<any>{
-        let sql = "select user_id, login_ts, logout_ts\
+        let sql = "select id, user_id, login_ts, logout_ts\
         from login_history\
         group by user_id";
         let stats = [];
@@ -570,6 +570,7 @@ export class sqlitedatabase {
                 if(data.rows.length>0){
                   for (var i = 0; i < data.rows.length; i++) {
                       stats.push({
+                        id: data.rows.item(i).id,
                         user_id: data.rows.item(i).user_id,
                         login_time: data.rows.item(i).login_ts,
                         logout_time: data.rows.item(i).logout_ts
@@ -585,7 +586,257 @@ export class sqlitedatabase {
               });
       }
 
-      
+
+      listAllRegistration(): Promise<any>{
+        let sql = "select * from sutton_user";
+        let stats = [];
+        return this.db.executeSql(sql, [])
+            .then(
+              (data)=>{ 
+                //console.log(JSON.stringify(data));
+                if(data.rows.length>0){
+                  for (var i = 0; i < data.rows.length; i++) {
+                      stats.push({
+                          user_id: data.rows.item(i).id.toString(),
+                          first_name: data.rows.item(i).first_name,
+                          last_name: data.rows.item(i).last_name,
+                          email_address: data.rows.item(i).email_address,
+                          phone_number: data.rows.item(i).phone_number,
+                         address: data.rows.item(i).address,
+                          postcode: data.rows.item(i).postcode,
+                          emergency_name: data.rows.item(i).emergency_name,
+                          emergency_telephone: data.rows.item(i).emergency_telephone,
+                          emergency_relationship: data.rows.item(i).emergency_relationship
+
+                      });
+                  }
+                }
+                //console.log(JSON.stringify(stats));
+                //console.log("------------------");
+                return stats;
+              }, 
+              err => {
+                  console.log('Error: ', err);
+                  return [];
+              });
+      }
+
+      clearRegistrationDb(): Promise<any>{
+        
+        console.log("clearRegistrationDB function called");
+        let sql = "delete from sutton_user";
+        let sql2 = "delete from sqlite_sequence where name='sutton_user'"
+      return  this.db.executeSql(sql, {})
+        .then(() => {
+            console.log("sutton_user  table reset to zero");
+
+
+          return  this.db.executeSql(sql2, {})
+            .then(() => {
+                console.log("sutton_user autoincrement reset to zero");
+            }).catch(e => console.log(e));
+
+        }).catch(e => console.log(e));
+ 
+
+      }
+
+      registerUserFromDB(data): Promise<any> {
+        var sql =   "insert into sutton_user(\
+                        first_name, last_name, \
+                        email_address, \
+                        phone_number, \
+                        address, postcode, \
+                        emergency_name,\
+                        emergency_telephone,\
+                        emergency_relationship\
+                    ) values (?,?,?,?,?,?,?,?,?)";
+        var values = [
+                        data[0], 
+                        data[1], 
+                        data[2], 
+                        data[3], 
+                        data[4], 
+                        data[5],
+                        data[6],
+                        data[7],
+                        data[8]
+                     ];
+                              
+        return this.db.executeSql(sql,values).catch(e => console.log(e));
+    }
+
+
+    listAllStatsNoCount(): Promise<any>{
+        let sql = "select id, user_id, recorded_at, question_id, option_text  \
+                  from question_response\
+                  order by user_id, question_id";
+        let stats = [];
+        return this.db.executeSql(sql, [])
+            .then(
+              (data)=>{ 
+                //console.log(JSON.stringify(data));
+                if(data.rows.length>0){
+                  for (var i = 0; i < data.rows.length; i++) {
+                      stats.push({
+                          id: data.rows.item(i).id,
+                          user_id: data.rows.item(i).user_id,
+                          recorded_at: data.rows.item(i).recorded_at,
+                          question_id: data.rows.item(i).question_id,
+                          response: data.rows.item(i).option_text,
+                      });
+                  }
+                }
+                //console.log(JSON.stringify(stats));
+                return stats;
+              }, 
+              err => {
+                  console.log('Error: ', err);
+                  return [];
+              });
+      }
+
+      clearRegistrationQuestionnaireDB(){
+        
+        console.log("clearRegistrationQuestionnaireDB function called");
+        let sql = "delete from question_response";
+        let sql2 = "delete from sqlite_sequence where name='question_response'"
+      return  this.db.executeSql(sql, {})
+        .then(() => {
+            console.log("question_response  table reset to zero");
+
+
+          return  this.db.executeSql(sql2, {})
+            .then(() => {
+                console.log("question_response autoincrement reset to zero");
+            }).catch(e => console.log(e));
+
+        }).catch(e => console.log(e));
+ 
+
+      }
+
+      clearLoginHistoryDB(){
+        
+        console.log("clearLoginHistoryDB function called");
+        let sql = "delete from login_history";
+        let sql2 = "delete from sqlite_sequence where name='login_history'"
+      return  this.db.executeSql(sql, {})
+        .then(() => {
+            console.log("login_history  table reset to zero");
+
+
+          return  this.db.executeSql(sql2, {})
+            .then(() => {
+                console.log("login_history autoincrement reset to zero");
+            }).catch(e => console.log(e));
+
+        }).catch(e => console.log(e));
+ 
+
+      }
+
+      clearDiversityQuestionnaireDB(){
+        
+        console.log("clearDiversityQuestionnaireDB function called");
+        let sql = "delete from diversity_response";
+        let sql2 = "delete from sqlite_sequence where name='diversity_response'"
+      return  this.db.executeSql(sql, {})
+        .then(() => {
+            console.log("diversity_response  table reset to zero");
+
+
+          return  this.db.executeSql(sql2, {})
+            .then(() => {
+                console.log("diversity_response autoincrement reset to zero");
+            }).catch(e => console.log(e));
+
+        }).catch(e => console.log(e));
+ 
+
+      }
+
+  
+
+      listAllDiversityNoCount(): Promise<any>{
+        let sql = "select id, recorded_at, question_id, option_text\
+        from diversity_response\
+        order by recorded_at, question_id";
+        let stats = [];
+        return this.db.executeSql(sql, [])
+            .then(
+              (data)=>{ 
+                //console.log(JSON.stringify(data));
+                if(data.rows.length>0){
+                  for (var i = 0; i < data.rows.length; i++) {
+                      stats.push({
+                        id: data.rows.item(i).id,
+                        recorded_at: data.rows.item(i).recorded_at,
+                        question_id: data.rows.item(i).question_id,
+                        response: data.rows.item(i).option_text
+                      });
+                  }
+                }
+                //console.log(JSON.stringify(stats));
+                return stats;
+              }, 
+              err => {
+                  console.log('Error: ', err);
+                  return [];
+              });
+      }
+
+      addLoginDataToDB(data): Promise<any> {
+        var sql =   "insert into login_history(\
+                        id, user_id, \
+                        login_ts, \
+                        logout_ts\
+                    ) values (?,?,?,?)";
+        var values = [
+                        data[0], 
+                        data[1], 
+                        data[2], 
+                        data[3]
+                     ];
+                              
+        return this.db.executeSql(sql,values).catch(e => console.log(e));
+    }
+
+
+    addRegistrationQuestionnaireToDB(data): Promise<any> {
+        var sql =   "insert into question_response(\
+                        id, user_id, \
+                        recorded_at, \
+                        question_id, option_text\
+                    ) values (?,?,?,?,?)";
+        var values = [
+                        data[0], 
+                        data[1], 
+                        data[2], 
+                        data[3],
+                        data[4]
+                     ];
+                              
+        return this.db.executeSql(sql,values).catch(e => console.log(e));
+    }
+
+    addDiversityQuestionnaireToDB(data): Promise<any> {
+        var sql =   "insert into diversity_response(\
+                        id,\
+                        recorded_at,\
+                        question_id, option_text\
+                    ) values (?,?,?,?)";
+        var values = [
+                        data[0], 
+                        data[1], 
+                        data[2], 
+                        data[3],
+                     ];
+                              
+        return this.db.executeSql(sql,values).catch(e => console.log(e));
+    }
+
+
 
 
 }
