@@ -62,6 +62,10 @@ import { DiversityQuestionnaire8Page } from '../pages/diversity-questionnaire8/d
 import { DiversityQuestionnaire9Page } from '../pages/diversity-questionnaire9/diversity-questionnaire9';
 import { DiversityQuestionnaire10Page } from '../pages/diversity-questionnaire10/diversity-questionnaire10';
 import { DiversityQuestionnaire11Page } from '../pages/diversity-questionnaire11/diversity-questionnaire11';
+import { BackandProvider } from '../providers/backand/backand';
+import { ConnectionCheckProvider } from '../providers/connection-check/connection-check';
+import { Network } from '@ionic-native/network';
+import { GoogleformsProvider } from '../providers/googleforms/googleforms';
 
 @NgModule({
   declarations: [
@@ -178,7 +182,12 @@ import { DiversityQuestionnaire11Page } from '../pages/diversity-questionnaire11
     File,
     sqlitedatabase,
     QuestionnaireDatabaseProvider,
-    LoginDatabaseProvider
+    LoginDatabaseProvider,
+    BackandProvider,
+    ConnectionCheckProvider,
+    Network,
+    GoogleformsProvider,
+    GoogleformsProvider
   ]
 })
 export class AppModule {}

@@ -92,7 +92,11 @@ export class ShareProvider {
     }
 
     updateDiversityInfo(key, value) {
-        this.registration_info[key] = value;
+        this.diversity[key] = value;
+    }
+
+    deleteLastDiversityInfor(){
+        this.registration_info
     }
 
 }
