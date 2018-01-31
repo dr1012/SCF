@@ -1,0 +1,78 @@
+page-diversity-questionnaire7 {
+  // CSS button 'semi-transparent-button' is adapted from https://www.webpagefx.com/blog/web-design/semi-transparent-buttons/
+
+    .summerBackground{
+        background-image: url('../assets/img/background-example.jpeg');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+      }
+  
+      .springBackground{
+        background-image: url('../assets/img/spring-background.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+      }
+  
+      .winterBackground{
+        background-image: url('../assets/img/winter-background.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+      }
+  
+      .autumnBackground{
+        background-image: url('../assets/img/autumn-background.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+      }
+
+      
+    .white-text {
+        color: rgb(255, 255, 255);
+        text-align: center;
+        text-decoration: none;
+        font-size:40px;
+        letter-spacing: 1px;
+        background: rgba(201, 200, 200, 0.5);
+    }
+
+    .semi-transparent-button {
+        border: 1px solid rgb(255, 255, 255);
+        display: block;
+        box-sizing: border-box;
+        padding: 8px;
+        height:70px;
+        width: 230px;
+        background: #fff; /* fallback color for old browsers */background: rgba(201, 200, 200, 0.5);
+        border-radius: 8px;
+        color: rgb(255, 255, 255);
+        text-align: center;
+        text-decoration: none;
+        font-size:40px;
+        letter-spacing: 1px;
+        transition: all 0.3s ease-out;
+        
+      }
+
+      .nav-button {
+        border: 1px solid rgb(255, 255, 255);
+        display: block;
+        box-sizing: border-box;
+        margin: 0 auto;
+        padding: 8px;
+        height:60px;
+        width: 185px;
+        background: #fff; /* fallback color for old browsers */background: rgba(201, 200, 200, 0.5);
+        border-radius: 8px;
+        color: rgb(255, 255, 255);
+        text-decoration: none;
+        font-size:30px;
+        letter-spacing: 1px;
+        transition: all 0.3s ease-out;
+        
+      }
+
+}

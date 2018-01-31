@@ -1,0 +1,8 @@
+{
+  "name": "adminLogin",
+  "app_id": "7643fe64",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
+}

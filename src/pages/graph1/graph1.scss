@@ -1,0 +1,178 @@
+page-graph1 {
+
+  // CSS button 'semi-transparent-button' is adapted from https://www.webpagefx.com/blog/web-design/semi-transparent-buttons/
+
+
+  .summerBackground{
+    background-image: url('../assets/img/background-example.jpeg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+  
+  .springBackground{
+    background-image: url('../assets/img/spring-background.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+  
+  .winterBackground{
+    background-image: url('../assets/img/winter-background.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+  
+  .autumnBackground{
+    background-image: url('../assets/img/autumn-background.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+  
+  
+  .semi-transparent-button {
+    border: 1px solid rgb(255, 255, 255);
+    display: block;
+    box-sizing: border-box;
+    padding: 8px;
+    height:40px;
+    width: 480px;
+    background: #fff; /* fallback color for old browsers */background: rgba(201, 200, 200, 0.5);
+    border-radius: 8px;
+    color: rgb(255, 255, 255);
+    text-align: center;
+    text-decoration: none;
+    font-size:18px;
+    letter-spacing: 1px;
+    transition: all 0.3s ease-out;
+    
+  }
+  
+  .semi-transparent-button2 {
+    border: 1px solid rgb(255, 255, 255);
+    display: block;
+    box-sizing: border-box;
+    padding: 8px;
+    height:45px;
+    width: 595px;
+    background: #fff; /* fallback color for old browsers */background: rgba(201, 200, 200, 0.5);
+    border-radius: 8px;
+    color: rgb(255, 255, 255);
+    text-align: center;
+    text-decoration: underline;
+    font-size:25px;
+    letter-spacing: 1px;
+    transition: all 0.3s ease-out;
+    
+  }
+  
+  
+  .chart-type-button {
+    border: 1px solid rgb(255, 255, 255);
+    display: block;
+    box-sizing: border-box;
+    padding: 8px;
+    height:40px;
+    width: 160px;
+    background: #fff; /* fallback color for old browsers */background: rgba(201, 200, 200, 0.5);
+    border-radius: 8px;
+    color: rgb(255, 255, 255);
+    text-align: center;
+    text-decoration: none;
+    font-size:18px;
+    letter-spacing: 1px;
+    transition: all 0.3s ease-out;
+    
+  }
+  
+  .chart-type-button-underline {
+    border: 1px solid rgb(255, 255, 255);
+    display: block;
+    box-sizing: border-box;
+    padding: 8px;
+    height:40px;
+    width: 160px;
+    background: #fff; /* fallback color for old browsers */background: rgba(201, 200, 200, 0.5);
+    border-radius: 8px;
+    color: rgb(255, 255, 255);
+    text-align: center;
+    text-decoration: underline;
+    font-weight: bold;
+    font-size:18px;
+    letter-spacing: 1px;
+    transition: all 0.3s ease-out;
+    
+  }
+  
+    .nav-button {
+      border: 1px solid rgb(255, 255, 255);
+      display: block;
+      box-sizing: border-box;
+      margin: 0 auto;
+      padding: 8px;
+      height:60px;
+      width: 185px;
+      background: #fff; /* fallback color for old browsers */background: rgba(201, 200, 200, 0.5);
+      border-radius: 8px;
+      color: rgb(255, 255, 255);
+      text-decoration: none;
+      font-size:30px;
+      letter-spacing: 1px;
+      transition: all 0.3s ease-out;
+      
+    }
+      /* Larger than a phone */
+@media (min-width: 700px) {
+  map, div[map] {
+    width: 95%;
+    height: 425px;
+  }
+  .chart-wrapper {
+    width: 75%;
+    height: 90%;
+    display: inline-block;
+    margin: 4em 2em;
+    position: absolute;
+    top: 45%;
+    left: 10%;
+    
+    
+ }
+
+
+}
+
+/* Small devices such as phone */
+@media (max-width: 700px) {
+  map, div[map] {
+    width: 90%;
+    height: 325px;
+  }
+
+  .chart-wrapper {
+    width: 80%;
+    height: 150%;
+    display: inline-block;
+    margin: 4em 2em;
+    position: absolute;
+    top: 72%;
+    left: 5%;
+    
+    
+ }
+}
+  
+  
+     canvas  {
+        height: 500px;
+        width: 500px;
+        background: #fff; /* fallback color for old browsers */background: rgba(255, 254, 254, 1);
+     }
+  
+
+}
+
+
+

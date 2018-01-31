@@ -1,0 +1,97 @@
+<ion-content padding [class.winterBackground]="winter" [class.summerBackground]="summer" [class.autumnBackground]="autumn"
+    [class.springBackground]="spring" [class.customBackground]="custom">
+    <ion-grid>
+        <ion-row>
+
+            <h1 id="login-heading2">
+                <img src="assets/img/Login-Logo.png" style="display:block;width:35%;height:auto;margin-left:auto;margin-right:auto;" />
+            </h1>
+
+        </ion-row>
+        <ion-row>
+            <ion-col>
+                <a id="login-back-button" class="nav-button" href="#" on-click="goToHomepage()" float-left>
+                    <div>
+                        <label> &#8239; </label>
+                        <ion-icon name="arrow-round-back"></ion-icon>
+                        <label> &#8239; Back</label>
+                    </div>
+
+                </a>
+            </ion-col>
+
+            <ion-col></ion-col>
+
+
+            <ion-col>
+
+                <a id="admin-home-home-button" class="nav-button" href="#" on-click="goToHomepage()" float-right>
+                    <div>
+                        <label> &#8239; </label>
+                        <ion-icon name="home"></ion-icon>
+                        <label> &#8239; Home</label>
+                    </div>
+
+                </a>
+            </ion-col>
+
+        </ion-row>
+        <br>
+        <br>
+        <ion-row>
+
+            <ion-col>
+                <h2 class="white-text" id="login-heading1" style="color:#ffffff;" align="center">
+                    Please start typing in your last name and choose from the drop-down list
+                </h2>
+            </ion-col>
+
+        </ion-row>
+
+
+
+        <ion-row>
+
+        </ion-row>
+        <br>
+        <br>
+
+        <ion-row>
+
+            <ion-col>
+
+
+                <form id="Login-form2" style="display:block;margin-left:auto;margin-right:auto;">
+                    <ion-searchbar #q (keyup.enter)="onEnter()" [(ngModel)]="lastNameInput" [ngModelOptions]="{standalone: true}" (ionInput)="getItems($event)"
+                        animation="false" placeholder="Last Name" class="full-width-select" style="width:300px" style="display:block;margin-left:auto;margin-right:auto;">
+                    </ion-searchbar>
+                    <ion-list *ngIf="showList">
+                        <ion-item *ngFor="let item of items" (click)='setSelection(item);'>
+                            {{ item.first_name }} {{item.last_name}}
+                        </ion-item>
+                    </ion-list>
+                </form>
+
+
+
+
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col>
+
+                <a id="login-button27" class="semi-transparent-button" href="#" on-click="loginToApp()" style="display:block;margin-left:auto;margin-right:auto;">
+                    <div>
+                        <ion-icon name="log-in"></ion-icon>
+                        <label> {{loginText}} </label>
+                    </div>
+
+                </a>
+
+            </ion-col>
+
+        </ion-row>
+
+
+    </ion-grid>
+</ion-content>

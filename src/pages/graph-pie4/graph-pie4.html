@@ -1,0 +1,124 @@
+<ion-content padding [class.winterBackground]="winter" [class.summerBackground]="summer" [class.autumnBackground]="autumn"
+    [class.springBackground]="spring" [class.customBackground]="custom">
+    <ion-grid>
+        <ion-row>
+            <ion-col>
+                <h1 id="login-heading2">
+                    <img src="assets/img/Registration_Data_Logo.png" style="display:block;width:65%;height:auto;margin-left:auto;margin-right:auto;"
+                        on-click="goToAdminVisitorData()" />
+                </h1>
+            </ion-col>
+
+
+        </ion-row>
+
+        <ion-row>
+            <ion-col>
+                <a id="admin-home-back-button" class="nav-button" href="#" on-click="goToAdminVisitorData()" float-left>
+                    <div>
+                        <label> &#8239; </label>
+                        <ion-icon name="arrow-round-back"></ion-icon>
+                        <label> &#8239; Back</label>
+                    </div>
+
+                </a>
+            </ion-col>
+
+            <ion-col>
+
+
+
+            </ion-col>
+
+
+            <ion-col>
+                <!-- Home button, to homepage -->
+                <a id="admin-home-home-button" class="nav-button" href="#" on-click="goToHomepage()" float-right>
+                    <div>
+                        <label> &#8239; </label>
+                        <ion-icon name="home"></ion-icon>
+                        <label> &#8239; Home</label>
+                    </div>
+
+                </a>
+            </ion-col>
+
+
+        </ion-row>
+
+
+        <ion-row>
+
+
+            <ion-col>
+                <a id="visitor-data-button1" class="semi-transparent-button" href="#" style="display:block;margin-left:auto;margin-right:auto;">
+                    <div>
+                        <label> 5) Total Number of Visits Per Month </label>
+
+
+                    </div>
+
+                </a>
+            </ion-col>
+
+        </ion-row>
+
+        <ion-row>
+
+            <ion-col>
+
+                <a id="visitor-data-button1" class="chart-type-button" href="#" on-click="goToGraphScatter4()" style="display:block;margin-left:auto;margin-right:auto;"
+                    float-right>
+                    <div>
+                        <label> Scatter </label>
+                    </div>
+                </a>
+
+            </ion-col>
+
+            <ion-col>
+
+                <a id="visitor-data-button2" class="chart-type-button-underline" href="#" style="display:block;margin-left:auto;margin-right:auto;">
+                    <div>
+
+                        <label> Pie </label>
+                    </div>
+
+                </a>
+
+            </ion-col>
+
+            <ion-col>
+                <a id="visitor-data-button2" class="chart-type-button" href="#" on-click="goToGraphBar4()" style="display:block;margin-left:auto;margin-right:auto;"
+                    float-left>
+                    <div>
+
+                        <label> Bar </label>
+                    </div>
+
+                </a>
+
+            </ion-col>
+
+
+        </ion-row>
+
+
+
+        <section class="chart-wrapper">
+            <canvas #pieChart></canvas>
+        </section>
+
+
+
+
+
+
+
+
+
+
+
+
+    </ion-grid>
+</ion-content>

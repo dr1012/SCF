@@ -1,0 +1,93 @@
+<ion-content padding [class.winterBackground]="winter" [class.summerBackground]="summer" [class.autumnBackground]="autumn"
+  [class.springBackground]="spring" [class.customBackground]="custom">
+  <ion-grid>
+    <ion-row>
+
+      <h1 id="login-heading2">
+        <img src="assets/img/Register-Logo.png" style="display:block;width:50%;height:auto;margin-left:auto;margin-right:auto;" />
+      </h1>
+
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <a id="login-back-button" class="nav-button" href="#" on-click="goBack()" float-left>
+          <div>
+            <label> &#8239; </label>
+            <ion-icon name="arrow-round-back"></ion-icon>
+            <label> &#8239; Back</label>
+          </div>
+
+        </a>
+      </ion-col>
+
+      <ion-col></ion-col>
+
+
+      <ion-col>
+        <a id="admin-home-home-button" class="nav-button" href="#" on-click="goToHomepage()" float-right>
+          <div>
+            <label> &#8239; </label>
+            <ion-icon name="home"></ion-icon>
+            <label> &#8239; Home</label>
+          </div>
+
+        </a>
+      </ion-col>
+
+    </ion-row>
+
+    <ion-row>
+      <br>
+      <br>
+      <ion-col>
+        <h2 id="login-heading1" class="white-text">
+          Please type in your surname:
+        </h2>
+      </ion-col>
+
+
+      <br>
+    </ion-row>
+
+
+
+    <ion-row>
+
+      <ion-col></ion-col>
+
+      <ion-col>
+
+        <form id="login-form2" style="display:block;margin-left:auto;margin-right:auto;">
+          <ion-item id="login-input2">
+            <ion-label></ion-label>
+            <ion-input type="text" placeholder="" [(ngModel)]="lastNameInput" [ngModelOptions]="{standalone: true}" style="width:200px"></ion-input>
+          </ion-item>
+        </form>
+
+      </ion-col>
+
+      <ion-col></ion-col>
+
+
+    </ion-row>
+    <ion-row>
+
+      <ion-col>
+
+        <a id="homepage-button1" class="semi-transparent-button" href="#" on-click="goRegister3()" style="display:block;margin-left:auto;margin-right:auto;">
+          <div>
+            <label> </label>
+            <ion-icon name="arrow-round-forward"></ion-icon>
+            <label> Next</label>
+          </div>
+        </a>
+
+      </ion-col>
+
+
+    </ion-row>
+
+
+  </ion-grid>
+
+</ion-content>

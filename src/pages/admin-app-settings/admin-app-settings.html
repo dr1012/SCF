@@ -1,0 +1,119 @@
+
+
+<ion-content padding [class.winterBackground]="winter"  [class.summerBackground]="summer"  [class.autumnBackground]="autumn" [class.springBackground]="spring" [class.customBackground]="custom">
+    <ion-grid>
+        <ion-row>
+                    
+                        <h1 id="login-heading2">
+                                <img src="assets/img/App-Settings.png" style="display:block;width:55%;height:auto;margin-left:auto;margin-right:auto;"/>
+                        </h1>
+                        
+                     
+        </ion-row>
+    
+        <ion-row>
+                <ion-col>
+                    <a id="admin-home-back-button" class="nav-button" href="#" on-click="goToAdminHome()" float-left>
+                            <div>
+                                <label> &#8239; </label>  
+                                <ion-icon name="arrow-round-back"></ion-icon>  
+                                <label> &#8239; Back</label>       
+                            </div>
+                        
+                    </a> 
+                </ion-col>
+                
+                <ion-col></ion-col>
+                
+                
+                          <ion-col>
+                              <!-- Home button, to homepage -->
+                              <a id="admin-home-home-button" class="nav-button" href="#" on-click="goToHomepage()" float-right>
+                                  <div>
+                                      <label> &#8239; </label>  
+                                      <ion-icon name="home"></ion-icon>  
+                                      <label> &#8239; Home</label>       
+                                  </div>
+                                
+                              </a> 
+                             
+                          </ion-col>
+                          
+                        </ion-row>
+    
+                        <br>
+                        <br>
+    
+    
+                        <ion-row>
+     
+                          <ion-col> 
+    
+                              <a id="homepage-button1" class="semi-transparent-button" href="#"  on-click="winterToggle()" style="display:block;margin-left:auto;margin-right:auto;">
+                                  <div> 
+                                    <ion-icon name="leaf"></ion-icon> 
+                                      <label> Beans Theme</label>       
+                                  </div>
+                                
+                              </a>
+                        
+                            <br>
+                            <br>
+                          </ion-col> 
+    
+                          
+                        </ion-row>  
+                          
+                        <ion-row>
+    
+                            <ion-col>
+                                <a id="homepage-button2" class="semi-transparent-button" href="#" on-click="autumnToggle()" style="display:block;margin-left:auto;margin-right:auto;">
+                                    <ion-icon name="rose"></ion-icon>
+                                    <label> Beans Theme 2</label>     
+                                </a>   
+                          <br>
+                          <br>
+                        
+                        </ion-col> 
+    
+                        </ion-row>
+    
+                        <ion-row>
+                            
+    
+                                <ion-col>
+                                    <a id="homepage-button3" class="semi-transparent-button" href="#" on-click="springToggle()" style="display:block;margin-left:auto;margin-right:auto;">
+                                        <ion-icon name="cloudy-night"></ion-icon>  
+                                        <label> Sunset Theme</label>
+                                        
+                                    </a> 
+                                    
+                              <br>
+                              <br>
+                            
+                            </ion-col> 
+                            
+                            </ion-row>
+                        
+                        <ion-row>
+                            
+    
+                            <ion-col>
+                                <a id="homepage-button3" class="semi-transparent-button" href="#" on-click="summerToggle()" style="display:block;margin-left:auto;margin-right:auto;">
+                                    <ion-icon name="sunny"></ion-icon> 
+                                    <label> Sunny Theme</label>
+                                    
+                                </a> 
+                                
+                          <br>
+                          <br>
+                        
+                        </ion-col> 
+                        
+                        </ion-row>
+                        
+      </ion-grid>
+    
+    
+      
+    </ion-content>
